@@ -10,23 +10,26 @@ import webapp.help.dao.Model;
 import com.google.appengine.api.users.User;
 @SuppressWarnings("serial")
 public class Controller extends HttpServlet {	
-	Model model;
 	
-	public Controller(){
-		Action.add(new AddContactAction(model));
-		Action.add(new EditContactAction(model));
-		Action.add(new DeleteContactAction(model));
-		Action.add(new ViewCategoryAction(model));
-		Action.add(new ViewContactAction(model));
-		Action.add(new SendMessageAction(model));
+	
+	public void init() throws ServletException {
+		Model model = new Model();
+//		Action.add(new AddContactAction(model));
+//		Action.add(new EditContactAction(model));
+//		Action.add(new DeleteContactAction(model));
+//		Action.add(new ViewCategoryAction(model));
+//		Action.add(new ViewContactAction(model));
+//		Action.add(new SendMessageAction(model));
 	}
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		doGet(req, resp);
 	}
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		String nextPage = performTheAction(req);
-    	sendToNextPage(nextPage,req,resp);
+	
+	//	String nextPage = performTheAction(req);
+    //	sendToNextPage(nextPage,req,resp);
+		sendToNextPage("guestbook.jsp",req,resp);
 	}	
 	private String performTheAction(HttpServletRequest request) {
 	    HttpSession session     = request.getSession(true);
