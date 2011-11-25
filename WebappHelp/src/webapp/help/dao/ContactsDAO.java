@@ -43,7 +43,7 @@ public class ContactsDAO {
 		ArrayList<ContactBean> list = new ArrayList<ContactBean>();
 		datastore = DatastoreServiceFactory.getDatastoreService();
 		
-		Query query = new Query(ContactBean.kind);
+		Query query = new Query(ContactBean.kind, KeyFactory.createKey("User",  UserServiceFactory.getUserService().getCurrentUser().getEmail()));
 					//	addFilter(	ContactBean.PROPERTY_CAT, Query.FilterOperator.EQUAL, category);
 	    
 		System.out.println(query.getKind() + " fetching! " + query.toString());

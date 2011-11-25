@@ -26,10 +26,10 @@ public class ContactBean{
 	private String category;
 	private Entity entity;
 	
-	public ContactBean(User owner, String name, String phone, String email, String category, String message){
-		initialize(KeyFactory.createKey(kind, email),
-					owner, name, phone, email, category, message);
-	}
+//	public ContactBean(User owner, String name, String phone, String email, String category, String message){
+//		initialize(KeyFactory.createKey(kind, email),
+//					owner, name, phone, email, category, message);
+//	}
 	
 	public ContactBean(Key key, User owner, String name, String phone, String email, String category, String message ){
 		initialize(key, owner, name, phone, email, category, message);
@@ -65,7 +65,7 @@ public class ContactBean{
 	
 	public Entity getEntity(){
 		if(entity == null){
-			entity = new Entity(kind);
+			entity = new Entity(kind,key);
 			entity.setProperty(PROPERTY_OWNER,owner);
 			entity.setProperty(PROPERTY_NAME,name);
 			entity.setProperty(PROPERTY_PHONE,phone);
@@ -89,7 +89,7 @@ public class ContactBean{
 		String email = req.getParameter(PROPERTY_EMAIL);
 		String message = req.getParameter(PROPERTY_MSG);
 		String category = req.getParameter(PROPERTY_CAT); // tODO update this later
-		
-		return new ContactBean(owner, name, phone, email, category, message);
+		Key key =  KeyFactory.createKey("User", owner.getEmail());
+		return new ContactBean(key,owner, name, phone, email, category, message);
 	}
 }
