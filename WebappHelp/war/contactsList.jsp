@@ -1,21 +1,27 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+
+<%@ page import="webapp.help.beans.ContactBean" %>
 
 <c:if test="${!(empty list)}">
+	
+	
 	<table>
-		<c:forEach var="contact" items="${list}">
-		<tr>
-			<td>
-				<span class="bookmark"><b>${bookmark.url}</b></span><br>
-				<span class="comment">${bookmark.comment}</span><br>
-				<span class="${bookmark.clicks} clicks!
+	<c:forEach var="ContactBean" items="${list}">
+		<tr >
+			  
 				
-				key: ${contact.key} <br>
-				name : ${conact.name} <br>
-				email: ${contact.email} <br>
-				messsage: ${contact.message} <br>
-			</td>
-		</tr>
-		</c:forEach>
+				<tr>    
+   		        <td valign="top" class="comment">Comment:${ContactBean.getName()}</td>
+   			     </tr>
+      			  <tr>
+       		     <td valign="top" class="owner">Owner: ${ContactBean.getEmail()}</td>
+       			 </tr>
+      			  <tr>
+       		     <td valign="top" class="clicks">Clicks:${ContactBean.getEmail()}</td>
+			    </tr>
+       	</tr>
+  
+				
+	 </c:forEach>
 	</table>
 </c:if>
