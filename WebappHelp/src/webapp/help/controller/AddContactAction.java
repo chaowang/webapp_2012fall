@@ -2,24 +2,25 @@ package webapp.help.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import webapp.help.beans.ContactBean;
 import webapp.help.dao.Model;
 
 public class AddContactAction extends Action {
-
+	public static String actionName="addContact.do";
 	public AddContactAction(Model model) {
 		super(model);
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return actionName;
 	}
 
 	@Override
 	public String perform(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		ContactBean bean = ContactBean.createBean(request);
+		model.getContactsDAO().addContact(bean);		
+		return "addContacts.jsp";
 	}
 
 }

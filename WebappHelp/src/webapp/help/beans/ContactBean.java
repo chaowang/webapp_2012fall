@@ -1,7 +1,12 @@
 package webapp.help.beans;
-import com.google.appengine.api.datastore.*;
+import javax.servlet.http.HttpServletRequest;
+import webapp.help.utility.Category;
+
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserServiceFactory;
 
 public class ContactBean{
 	public static String kind = "Contact";
@@ -18,19 +23,19 @@ public class ContactBean{
 	private String phone;
 	private String email;
 	private String message;
-	private Category category;
+	private String category;
 	private Entity entity;
 	
-	public ContactBean(User owner, String name, String phone, String email, Category category, String message){
+	public ContactBean(User owner, String name, String phone, String email, String category, String message){
 		initialize(KeyFactory.createKey(kind, email),
 					owner, name, phone, email, category, message);
 	}
 	
-	public ContactBean(Key key, User owner, String name, String phone, String email, Category category, String message ){
+	public ContactBean(Key key, User owner, String name, String phone, String email, String category, String message ){
 		initialize(key, owner, name, phone, email, category, message);
 	}
 	
-	private void initialize(Key key, User owner, String name, String phone, String email, Category category, String message ){
+	private void initialize(Key key, User owner, String name, String phone, String email, String category, String message ){
 		this.key = key;
 		this.owner = owner;
 		this.name = name;
@@ -46,7 +51,7 @@ public class ContactBean{
 		phone = (String) entity.getProperty(PROPERTY_PHONE);
 		email = (String) entity.getProperty(PROPERTY_EMAIL);
 		message = (String) entity.getProperty(PROPERTY_MSG);
-		category = (Category) entity.getProperty(PROPERTY_CAT);
+		category = (String) entity.getProperty(PROPERTY_CAT);
 		key = entity.getKey();
 		this.entity = entity;
 	}
@@ -56,11 +61,11 @@ public class ContactBean{
 	public String getPhone(){return phone;}
 	public String getEmail(){return email;}
 	public String getMessage(){return message;}
-	public Category getCategory(){return category;}
+	public String getCategory(){return category;}
 	
 	public Entity getEntity(){
 		if(entity == null){
-			entity = new Entity(key);
+			entity = new Entity(kind);
 			entity.setProperty(PROPERTY_OWNER,owner);
 			entity.setProperty(PROPERTY_NAME,name);
 			entity.setProperty(PROPERTY_PHONE,phone);
@@ -75,5 +80,16 @@ public class ContactBean{
 	public static boolean Validate(ContactBean bean){
 		// TODO
 		return false;
+	}
+	
+	public static ContactBean createBean(HttpServletRequest req){
+		User owner = UserServiceFactory.getUserService().getCurrentUser();
+		String name = req.getParameter(PROPERTY_NAME);
+		String phone = req.getParameter(PROPERTY_PHONE);
+		String email = req.getParameter(PROPERTY_EMAIL);
+		String message = req.getParameter(PROPERTY_MSG);
+		String category = req.getParameter(PROPERTY_CAT); // tODO update this later
+		
+		return new ContactBean(owner, name, phone, email, category, message);
 	}
 }

@@ -13,23 +13,18 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.google.appengine.api.datastore.FetchOptions.Builder;
 
 import webapp.help.beans.ContactBean;
 import webapp.help.utility.Category;
 
 public class ContactsDAO {
 	private DatastoreService datastore;
-	private UserService userService;
-	private User user;
 	
 	public boolean addContact(ContactBean bean){
-		userService = UserServiceFactory.getUserService();
 		datastore = DatastoreServiceFactory.getDatastoreService();
-        user = userService.getCurrentUser();
-        
-        datastore.put(bean.getEntity());
-        
-        return false;
+        datastore.put(bean.getEntity());        
+        return true;
 	}
 
 	public boolean deleteContact(Key contactKey){
@@ -44,23 +39,20 @@ public class ContactsDAO {
 		return true;
 	}
 	
-	public List<ContactBean> getContacts(Category category){
+	public List<ContactBean> getContacts(String category){
 		ArrayList<ContactBean> list = new ArrayList<ContactBean>();
-		userService = UserServiceFactory.getUserService();
 		datastore = DatastoreServiceFactory.getDatastoreService();
 		
-		Query query = new Query(ContactBean.kind).
-						addFilter(	ContactBean.PROPERTY_CAT, 
-									Query.FilterOperator.EQUAL,
-									category);
-	    for(Entity e : datastore.prepare(query).asIterable()){
+		Query query = new Query(ContactBean.kind);
+					//	addFilter(	ContactBean.PROPERTY_CAT, Query.FilterOperator.EQUAL, category);
+	    
+		System.out.println(query.getKind() + " fetching! " + query.toString());
+		
+		for(Entity e : datastore.prepare(query).asIterable()){
 	    	list.add(new ContactBean(e));
+	    	System.out.println("ding!");
 	    }
 		
 		return list;
-	}
-	
-	private Entity searchContacts(){
-		return null;
 	}
 }

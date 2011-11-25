@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import webapp.help.dao.Model;
 
 public class SendMessageAction extends Action {
-
+	public static String actionName="sendMessage.do";
 	public SendMessageAction(Model model) {
 		super(model);
 		// TODO Auto-generated constructor stub
@@ -13,8 +13,7 @@ public class SendMessageAction extends Action {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return actionName;
 	}
 
 	@Override

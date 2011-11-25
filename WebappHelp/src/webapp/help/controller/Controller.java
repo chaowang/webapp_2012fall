@@ -12,62 +12,54 @@ import com.google.appengine.api.users.User;
 public class Controller extends HttpServlet {	
 	Model model;
 	
-	public Controller(){
+	@Override
+	public void init(){
+		model = new Model();
 		Action.add(new AddContactAction(model));
 		Action.add(new EditContactAction(model));
 		Action.add(new DeleteContactAction(model));
 		Action.add(new ViewCategoryAction(model));
 		Action.add(new ViewContactAction(model));
 		Action.add(new SendMessageAction(model));
+		Action.add(new LoginAction(model));
+		System.err.println("initialized .... ");
 	}
-	
+	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		doGet(req, resp);
 	}
+	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String nextPage = performTheAction(req);
-    	sendToNextPage(nextPage,req,resp);
+		resp.sendRedirect(nextPage);
 	}	
 	private String performTheAction(HttpServletRequest request) {
-	    HttpSession session     = request.getSession(true);
 	    String      servletPath = request.getServletPath();
 	    UserService userService = UserServiceFactory.getUserService();
 	    User 		user 		= userService.getCurrentUser(); 
 	    String      actionName  = getActionName(servletPath);
+
+	    // first landing
+	    if(actionName == null || actionName.length() == 0){
+	    	if(user == null){
+	    		return "landing.jsp";
+	    	}
+	    	else{
+	    		return "viewCategory.jsp";
+	    	}
+	    }
 	    
+	    // trying to access any other page and if not logged in, must log in.
+	    if(user == null){
+	    	request.setAttribute("redirect", "/"+actionName);
+	    	actionName = LoginAction.actionName;
+	    }
 	    
 		return Action.perform(actionName,request);
 	}
+	
 	private String getActionName(String path) {
         int slash = path.lastIndexOf('/');
         return path.substring(slash+1);
-    }
-	
-	private void sendToNextPage(String nextPage, HttpServletRequest request, HttpServletResponse response) throws IOException{
-    	if (nextPage == null) {
-    		response.sendError(HttpServletResponse.SC_NOT_FOUND,request.getServletPath());
-    		return;
-    	}
-    	
-    	if (nextPage.charAt(0) == '/') {
-    		String proto = request.isSecure() ? "https://" : "http://";
-			String host  = request.getServerName();
-			String port  = ":"+String.valueOf(request.getServerPort());
-			if (port.equals(":80")) port = "";
-			if (port.equals(":443")) port = "";
-			String context = request.getContextPath();
-			int lastSlash = context.lastIndexOf('/');
-			String prefix = ( lastSlash==0 ? context : context.substring(0,lastSlash) );
-			response.sendRedirect(proto+host+port+prefix+nextPage);
-			return;
-    	}
-    	
-   		RequestDispatcher d = request.getRequestDispatcher("/view/"+nextPage);
-   		try {
-			d.forward(request,response);
-		} catch (ServletException e) {
-			// TODO FIX THIS LATER.
-			e.printStackTrace();
-		}
     }
 }

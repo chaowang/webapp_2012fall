@@ -2,10 +2,12 @@ package webapp.help.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.google.appengine.api.users.UserServiceFactory;
+
 import webapp.help.dao.Model;
 
 public class LoginAction extends Action {
-	private String actionName="login.do";
+	public static String actionName="login.do";
 	public LoginAction(Model model) {
 		super(model);
 		// TODO Auto-generated constructor stub
@@ -18,8 +20,7 @@ public class LoginAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		return UserServiceFactory.getUserService().createLoginURL(request.getRequestURI());
 	}
 
 }

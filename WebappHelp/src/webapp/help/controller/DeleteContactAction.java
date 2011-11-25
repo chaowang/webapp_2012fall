@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import webapp.help.dao.Model;
 
 public class DeleteContactAction extends Action {
-
+	public static String actionName="deleteContact.do";
 	public DeleteContactAction(Model model) {
 		super(model);
 		// TODO Auto-generated constructor stub
@@ -13,8 +13,7 @@ public class DeleteContactAction extends Action {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return actionName;
 	}
 
 	@Override

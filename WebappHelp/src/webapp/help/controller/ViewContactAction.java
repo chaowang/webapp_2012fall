@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import webapp.help.dao.Model;
 
 public class ViewContactAction extends Action {
-
+	public static String actionName = "viewContact.do";
 	public ViewContactAction(Model model) {
 		super(model);
 		// TODO Auto-generated constructor stub
@@ -13,14 +13,13 @@ public class ViewContactAction extends Action {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return actionName;
 	}
 
 	@Override
 	public String perform(HttpServletRequest request) {
 		// TODO Auto-generated method stub
-		return null;
+		return "test.jsp";
 	}
 
 }
