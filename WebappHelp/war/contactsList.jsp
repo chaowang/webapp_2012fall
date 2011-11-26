@@ -3,6 +3,19 @@
 
 
 
+<SELECT id=u10 size=2 class="u10"   >
+<OPTION selected value="Alex">Alex</OPTION>
+<OPTION  value="Barbara">Barbara</OPTION>
+<OPTION  value="Cathy">Cathy</OPTION>
+<OPTION  value="David">David</OPTION>
+<OPTION  value="Eli">Eli</OPTION>
+<OPTION  value="Farny">Farny</OPTION>
+<OPTION  value="George">George</OPTION>
+<OPTION  value="Holly">Holly</OPTION>
+<OPTION  value="Iris">Iris</OPTION>
+<OPTION  value="Jolly">Jolly</OPTION>
+</SELECT>
+
 <c:if test="${!(empty list)}">
 	<table>
 		<c:forEach var="contact" items="${list}">
