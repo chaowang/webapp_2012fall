@@ -1,0 +1,7 @@
+* use the view display the contacts
+* create a new account for app to send out email
+* a landing page
+* change the cell view to use relative demensions
+* redirect to https
+* more error detection
+
