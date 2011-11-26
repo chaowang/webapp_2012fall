@@ -28,11 +28,11 @@ public class AddContactAction extends Action {
 		
 		errors.addAll(bean.getValidationErrors());
 		if(errors.size()>0){
-			return "veiewCategory.jsp";
+			return "addContacts.jsp";
 		}
 		
 		model.getContactsDAO().addContact(bean);		
-		return "addContacts.jsp";
+		return "veiewCategory.jsp";
 	}
 
 }

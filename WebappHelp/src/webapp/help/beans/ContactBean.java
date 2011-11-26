@@ -1,4 +1,7 @@
 package webapp.help.beans;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -7,9 +10,6 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import edu.cmu.cs15437.photo.formbeans.ArrayList;
-import edu.cmu.cs15437.photo.formbeans.List;
-import edu.cmu.cs15437.photo.formbeans.String;
 
 public class ContactBean{
 	public static String kind = "Contact";
@@ -93,8 +93,8 @@ public class ContactBean{
 			errors.add("Name is required");
 		}
 
-		if (email == null || email.length() == 0) {
-			errors.add("Email is required");
+		if(!verifyEmail(email)){
+			errors.add("Email is in wrong format");
 		}
 		
 		return errors;
@@ -109,4 +109,44 @@ public class ContactBean{
 		
 		return new ContactBean(name, phone, email, category, message);
 	}
+	 private boolean verifyEmail(String email){
+	    	
+	    	int identifierPos=-1;
+	    	int periodPos=-1;
+
+            if(email==null||email.length()==0)
+            	return false;
+            
+	    	//check if the email has @
+	    	for(int i=0;i<email.length();i++){
+	    		if(email.charAt(i)=='@')
+	    			identifierPos=i;
+	    		/*
+	    		if(!(email.charAt(i)>32 && email.charAt(i)<128) )
+	    			printable=false;
+	    		*/
+	    	}
+	    	for(int i=0;i<email.length();i++){
+	    		if(email.charAt(i)=='.')
+	    			periodPos=i;
+	    		/*
+	    		if(!(email.charAt(i)>32 && email.charAt(i)<128) )
+	    			printable=false;
+	    		*/
+	    	}
+	    	
+	    	if(identifierPos==-1||identifierPos==0||identifierPos==(email.length()-1))
+		    	   return false;
+	    	
+	    	if(periodPos==-1||periodPos==0||periodPos==(email.length()-1))
+		    	   return false;
+	    	
+	    	if(periodPos-identifierPos==1||periodPos-identifierPos==-1)
+	    		   return false;
+	    	/*	
+	    	if(!printable)
+	    		return false;
+	    	*/
+	    	return true;
+	    }
 }
