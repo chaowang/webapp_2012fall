@@ -15,7 +15,7 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 
 public class Mailer {
-	public static boolean sendMesssages(List<ContactBean> contacts){
+	public static boolean sendMesssages(List<ContactBean> contacts, double longitude, double latitude){
 		Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
         User user = UserServiceFactory.getUserService().getCurrentUser();
@@ -29,7 +29,7 @@ public class Mailer {
 	            msg.addRecipient(Message.RecipientType.TO,
 	                             new InternetAddress(contact.getEmail(), contact.getName()));
 	            msg.setSubject("Your Example.com account has been activated");
-	            msg.setText(contact.getMessage());
+	            msg.setText(contact.getMessage() + " I am currently at (" + longitude + "," + latitude + ")");
 	            Transport.send(msg);
             }
         } catch (AddressException e) {

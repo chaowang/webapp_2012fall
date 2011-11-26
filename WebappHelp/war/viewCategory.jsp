@@ -41,7 +41,7 @@
 		
 		<jsp:include page="contactsList.jsp"/>
 		
-		<input type="submit" onClick="getGeoAndSubmit()"/>
+		<button onClick="getGeoAndSubmit()">Send Message</button>
 
 	</body>
 </html>
