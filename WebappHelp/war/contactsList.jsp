@@ -12,7 +12,7 @@
                     <input type="submit" class="remove" value="X"/>
                 </form>
 			
-						
+				key : ${contact.key} <br>
 				name : ${contact.name} <br>
 				email: ${contact.email} <br>
 				messsage: ${contact.message} <br>

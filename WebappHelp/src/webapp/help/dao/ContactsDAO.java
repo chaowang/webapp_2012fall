@@ -27,9 +27,9 @@ public class ContactsDAO {
         return true;
 	}
 
-	public boolean deleteContact(ContactBean bean){
+	public boolean deleteContact(Key key){
 		datastore = DatastoreServiceFactory.getDatastoreService();
-		datastore.delete(bean.getKey());
+		datastore.delete(key);
 		return true;
 	}
 	

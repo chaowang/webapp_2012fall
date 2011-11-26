@@ -25,7 +25,6 @@ public class ContactBean{
 	private String email;
 	private String message;
 	private String category;
-	
 	private Entity entity;
 	
 	public ContactBean( String name, String phone, String email, String category, String message){
@@ -45,7 +44,6 @@ public class ContactBean{
 	public ContactBean(Entity entity){
 		parent = KeyFactory.createKey("User",  UserServiceFactory.getUserService().getCurrentUser().getEmail());
 		key = entity.getKey();
-		
 		name = (String) entity.getProperty(PROPERTY_NAME);
 		phone = (String) entity.getProperty(PROPERTY_PHONE);
 		email = (String) entity.getProperty(PROPERTY_EMAIL);
