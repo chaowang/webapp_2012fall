@@ -25,6 +25,8 @@ public class ContactBean{
 	private String email;
 	private String message;
 	private String category;
+	private String keyStr;
+	
 	private Entity entity;
 	
 	public ContactBean( String name, String phone, String email, String category, String message){
@@ -39,17 +41,18 @@ public class ContactBean{
 		this.entity = getEntity();
 		
 		this.key = entity.getKey();
+		this.keyStr = KeyFactory.keyToString(this.key);
 	}
 	
 	public ContactBean(Entity entity){
-		parent = KeyFactory.createKey("User",  UserServiceFactory.getUserService().getCurrentUser().getEmail());
+		parent = entity.getParent();
 		key = entity.getKey();
 		name = (String) entity.getProperty(PROPERTY_NAME);
 		phone = (String) entity.getProperty(PROPERTY_PHONE);
 		email = (String) entity.getProperty(PROPERTY_EMAIL);
 		message = (String) entity.getProperty(PROPERTY_MSG);
 		category = (String) entity.getProperty(PROPERTY_CAT);
-		
+		keyStr = KeyFactory.keyToString(entity.getKey());
 		this.entity = entity;
 	}
 	
@@ -78,7 +81,7 @@ public class ContactBean{
 	public String getEmail(){return email;}
 	public String getMessage(){return message;}
 	public String getCategory(){return category;}
-
+	public String getKeyStr() {return keyStr;}
 	
 	
 	public static boolean Validate(ContactBean bean){
