@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+
 import webapp.help.beans.ContactBean;
 import webapp.help.dao.Model;
 import webapp.help.utility.Category;
@@ -23,8 +26,8 @@ public class EditContactAction extends Action {
 	@Override
 	public String perform(HttpServletRequest request) {
 		ContactBean bean = ContactBean.createBean(request);
-		
-		model.getContactsDAO().updateContacts(bean);	
+		Key key = KeyFactory.stringToKey(request.getParameter("keyStr"));
+		model.getContactsDAO().updateContacts(bean,key);	
 		
 		List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 		request.setAttribute("list",list);

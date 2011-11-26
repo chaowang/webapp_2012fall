@@ -17,7 +17,6 @@ public class Controller extends HttpServlet {
 		model = new Model();
 		Action.add(new AddContactAction(model));
 		Action.add(new EditContactAction(model));
-		Action.add(new DeleteContactAction(model));
 		Action.add(new ViewCategoryAction(model));
 		Action.add(new ViewContactAction(model));
 		Action.add(new SendMessageAction(model));

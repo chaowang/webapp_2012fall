@@ -34,9 +34,22 @@ public class ContactsDAO {
 		return true;
 	}
 	
-	public boolean updateContacts(ContactBean bean){
+	public boolean updateContacts(ContactBean bean,Key key){
+		
 		datastore = DatastoreServiceFactory.getDatastoreService();
-		datastore.put(bean.getEntity());
+		try {
+			Entity entity = datastore.get(key);
+						
+			entity.setProperty(ContactBean.PROPERTY_PARENT,bean.getName());
+			entity.setProperty(ContactBean.PROPERTY_PHONE,bean.getPhone());
+			entity.setProperty(ContactBean.PROPERTY_EMAIL,bean.getEmail());
+			entity.setProperty(ContactBean.PROPERTY_MSG,bean.getMessage());  
+			entity.setProperty(ContactBean.PROPERTY_CAT,bean.getCategory());
+			datastore.put(entity);
+		} catch (EntityNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return true;
 	}
     public ContactBean getContact(Key key) throws EntityNotFoundException{

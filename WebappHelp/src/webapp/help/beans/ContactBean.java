@@ -25,6 +25,7 @@ public class ContactBean{
 	private String email;
 	private String message;
 	private String category;
+	
 	private String keyStr;
 	
 	private Entity entity;
