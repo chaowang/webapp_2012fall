@@ -6,12 +6,9 @@
 		<c:forEach var="contact" items="${list}">
 		<tr>
 			<td>
-				<span class="bookmark"><b>${bookmark.url}</b></span><br>
-				<span class="comment">${bookmark.comment}</span><br>
-				<span class="${bookmark.clicks} clicks!
-				
+						
 				key: ${contact.key} <br>
-				name : ${conact.name} <br>
+				name : ${contact.name} <br>
 				email: ${contact.email} <br>
 				messsage: ${contact.message} <br>
 			</td>
