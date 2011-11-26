@@ -33,13 +33,3 @@
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="edit_files/u16_original.png");
 }
 
-* html .u18_original {
-    background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="edit_files/u18_original.png");
-}
-
-* html .u20_original {
-    background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="edit_files/u16_original.png");
-}
-

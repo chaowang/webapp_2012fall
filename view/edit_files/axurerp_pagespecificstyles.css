@@ -340,55 +340,13 @@ div.main_container {
 
 .u16_container {
     position:absolute;
-    left:730px;
-    top:625px;
-    width:200px;
-    height:30px;
-}
-
-#u16_img {
-    position:absolute;
-    left:-3px;
-    top:-3px;
-    width:206px;
-    height:36px;
-}
-
-.u17 {
-    position:absolute;
-    left:2px;
-    top:3px;
-    width:196px;
-    height:24px;
-    ;
-    ;
-    ;
-    font-family:Arial;
-    text-align:left;
-    word-wrap:break-word;
-}
-
-.u16 {
-    position:absolute;
-    left:730px;
-    top:625px;
-    width:200px;
-    height:30px
-}
-
-.u18_original {
-    background-image: url('../edit_files/u18_original.png');
-}
-
-.u18_container {
-    position:absolute;
     left:30px;
     top:30px;
     width:100px;
     height:100px;
 }
 
-#u18_img {
+#u16_img {
     position:absolute;
     left:0px;
     top:0px;
@@ -396,7 +354,7 @@ div.main_container {
     height:100px;
 }
 
-.u19 {
+.u17 {
     position:absolute;
     left:2px;
     top:42px;
@@ -410,7 +368,7 @@ div.main_container {
     word-wrap:break-word;
 }
 
-.u18 {
+.u16 {
     position:absolute;
     left:30px;
     top:30px;
@@ -418,49 +376,7 @@ div.main_container {
     height:100px
 }
 
-.u20_original {
-    background-image: url('../edit_files/u16_original.png');
-}
-
-.u20_container {
-    position:absolute;
-    left:520px;
-    top:625px;
-    width:200px;
-    height:30px;
-}
-
-#u20_img {
-    position:absolute;
-    left:-3px;
-    top:-3px;
-    width:206px;
-    height:36px;
-}
-
-.u21 {
-    position:absolute;
-    left:2px;
-    top:3px;
-    width:196px;
-    height:24px;
-    ;
-    ;
-    ;
-    font-family:Arial;
-    text-align:left;
-    word-wrap:break-word;
-}
-
-.u20 {
-    position:absolute;
-    left:520px;
-    top:625px;
-    width:200px;
-    height:30px
-}
-
-.u22 {
+.u18 {
     position:absolute;
     left:290px;
     top:490px;
@@ -478,7 +394,7 @@ div.main_container {
     
 }
 
-.u23 {
+.u19 {
     position:absolute;
     left:290px;
     top:535px;
@@ -496,7 +412,7 @@ div.main_container {
     
 }
 
-.u24 {
+.u20 {
     position:absolute;
     left:290px;
     top:580px;
@@ -508,6 +424,42 @@ div.main_container {
     font-family:'Century Gothic';
     font-size: 18px;
     color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u21 {
+    position:absolute;
+    left:520px;
+    top:625px;
+    width:200px;
+    height:30px;
+    ;
+    ;
+    text-align: center;;
+    font-family:'Century Gothic';
+    font-size: 18px;
+    color:#7F7F7F;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u22 {
+    position:absolute;
+    left:730px;
+    top:625px;
+    width:200px;
+    height:30px;
+    ;
+    ;
+    text-align: center;;
+    font-family:'Century Gothic';
+    font-size: 18px;
+    color:#7F7F7F;
     font-style:normal;
     font-weight:normal;
     text-decoration:none;

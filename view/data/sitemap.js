@@ -7,10 +7,6 @@
 "url":"Home.html",
 "children":[
 {
-"pageName":"general",
-"type":"Wireframe",
-"url":"general.html"},
-{
 "pageName":"edit",
 "type":"Wireframe",
 "url":"edit.html"}]}]};

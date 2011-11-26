@@ -35,7 +35,7 @@
 
 * html .u18_original {
     background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="Home_files/u18_original.png");
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="Home_files/u16_original.png");
 }
 
 * html .u20_original {
@@ -45,16 +45,6 @@
 
 * html .u22_original {
     background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="Home_files/u16_original.png");
-}
-
-* html .u24_original {
-    background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="Home_files/u24_original.png");
-}
-
-* html .u26_original {
-    background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="Home_files/u18_original.png");
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="Home_files/u22_original.png");
 }
 
