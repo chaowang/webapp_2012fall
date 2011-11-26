@@ -25,14 +25,16 @@ public class Controller extends HttpServlet {
 		System.err.println("initialized .... ");
 	}
 	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException , ServletException {
 		doGet(req, resp);
 	}
+	
 	@Override
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException , ServletException {
 		String nextPage = performTheAction(req);
-		resp.sendRedirect(nextPage);
-	}	
+		sendToNextPage(nextPage,req,resp);
+	}
+	
 	private String performTheAction(HttpServletRequest request) {
 	    String      servletPath = request.getServletPath();
 	    UserService userService = UserServiceFactory.getUserService();
@@ -62,4 +64,28 @@ public class Controller extends HttpServlet {
         int slash = path.lastIndexOf('/');
         return path.substring(slash+1);
     }
+	
+	 private void sendToNextPage(String nextPage, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	    	// System.out.println("nextPage="+nextPage);
+	    	
+	    	if (nextPage == null) {
+	    		response.sendError(HttpServletResponse.SC_NOT_FOUND,request.getServletPath());
+	    		return;
+	    	}
+	    	
+	    	if (nextPage.charAt(0) == '/') {
+				String host  = request.getServerName();
+				String port  = ":"+String.valueOf(request.getServerPort());
+				if (port.equals(":80")) port = "";
+				response.sendRedirect("http://"+host+port+nextPage);
+				return;
+	    	}
+	    	
+	    	if(nextPage.substring(0, 7).equals("http://")||nextPage.substring(0, 8).equals("https://")){
+	    		response.sendRedirect(nextPage);
+				return;
+	    	}
+	   		RequestDispatcher d = request.getRequestDispatcher("/"+nextPage);
+	   		d.forward(request,response);
+	    }
 }
