@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -38,18 +39,21 @@ public class ContactsDAO {
 		datastore.put(bean.getEntity());
 		return true;
 	}
-    public ContactBean getContact(Key key){
+    public ContactBean getContact(Key key) throws EntityNotFoundException{
 		datastore = DatastoreServiceFactory.getDatastoreService();
-		return datastore.get(key);
+		return new ContactBean(datastore.get(key));
 
     }
-	public List<ContactBean> getContacts(String category){
-		ArrayList<ContactBean> list = new ArrayList<ContactBean>();
-		datastore = DatastoreServiceFactory.getDatastoreService();
-		
-		Query query = new Query(ContactBean.kind,ContactBean.parent);
+    public List<ContactBean> getContacts(String category){
+    	ArrayList<ContactBean> list = new ArrayList<ContactBean>();
+    	datastore = DatastoreServiceFactory.getDatastoreService();
 
-	    query.filter('ContactBean.PROPERTY_CAT =', category);
+    	Query query = new Query(ContactBean.kind, 
+    			KeyFactory.createKey("User", 
+    					UserServiceFactory.getUserService().getCurrentUser().getEmail()));
+
+		query.addFilter(ContactBean.PROPERTY_CAT, Query.FilterOperator.EQUAL, category);
+	   
 
 		System.out.println(query.getKind() + " fetching! " + query.toString());
 		for(Entity e : datastore.prepare(query).asIterable()){

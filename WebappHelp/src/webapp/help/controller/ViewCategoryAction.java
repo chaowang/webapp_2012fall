@@ -22,7 +22,7 @@ public class ViewCategoryAction extends Action {
 	@Override
 	public String perform(HttpServletRequest request) {
 		List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
-		request.setAttribute("list",list);
+			request.setAttribute("list",list);
 	
 		return "viewCategory.jsp";
 	}
