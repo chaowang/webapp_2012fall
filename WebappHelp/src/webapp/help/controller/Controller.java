@@ -22,6 +22,7 @@ public class Controller extends HttpServlet {
 		Action.add(new ViewContactAction(model));
 		Action.add(new SendMessageAction(model));
 		Action.add(new LoginAction(model));
+		Action.add(new UpdateContact(model));
 		System.err.println("initialized .... ");
 	}
 	@Override
@@ -56,6 +57,7 @@ public class Controller extends HttpServlet {
 	    	request.setAttribute("redirect", "/"+actionName);
 	    	actionName = LoginAction.actionName;
 	    }
+	    
 	    
 		return Action.perform(actionName,request);
 	}
