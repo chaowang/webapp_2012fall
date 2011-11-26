@@ -40,11 +40,13 @@ public class ContactsDAO {
 		try {
 			Entity entity = datastore.get(key);
 						
-			entity.setProperty(ContactBean.PROPERTY_PARENT,bean.getName());
+		
+			entity.setProperty(ContactBean.PROPERTY_NAME,bean.getName());
 			entity.setProperty(ContactBean.PROPERTY_PHONE,bean.getPhone());
 			entity.setProperty(ContactBean.PROPERTY_EMAIL,bean.getEmail());
 			entity.setProperty(ContactBean.PROPERTY_MSG,bean.getMessage());  
 			entity.setProperty(ContactBean.PROPERTY_CAT,bean.getCategory());
+			
 			datastore.put(entity);
 		} catch (EntityNotFoundException e) {
 			// TODO Auto-generated catch block
