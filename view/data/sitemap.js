@@ -4,9 +4,8 @@
 {
 "pageName":"Home",
 "type":"Wireframe",
-"url":"Home.html",
-"children":[
+"url":"Home.html"},
 {
 "pageName":"edit",
 "type":"Wireframe",
-"url":"edit.html"}]}]};
+"url":"edit.html"}]};
