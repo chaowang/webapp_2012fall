@@ -8,17 +8,16 @@
 	<table>
 	<c:forEach var="ContactBean" items="${list}">
 		<tr >
-			  
-				
-				<tr>    
-   		        <td valign="top" class="comment">Comment:${ContactBean.getName()}</td>
+			    <tr>    
+   		        <td valign="top" class="comment">Comment:${ContactBean.name}</td>
    			     </tr>
       			  <tr>
-       		     <td valign="top" class="owner">Owner: ${ContactBean.getEmail()}</td>
+       		     <td valign="top" class="owner">Owner: ${ContactBean.email)}</td>
        			 </tr>
-      			  <tr>
-       		     <td valign="top" class="clicks">Clicks:${ContactBean.getEmail()}</td>
-			    </tr>
+       			 <tr>
+       		     <td valign="top" class="owner">LIST</td>
+       			 </tr>
+      			 
        	</tr>
   
 				
