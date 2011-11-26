@@ -38,19 +38,22 @@ public class ContactsDAO {
 		datastore.put(bean.getEntity());
 		return true;
 	}
-	
+    public ContactBean getContact(Key key){
+		datastore = DatastoreServiceFactory.getDatastoreService();
+		return datastore.get(key);
+
+    }
 	public List<ContactBean> getContacts(String category){
 		ArrayList<ContactBean> list = new ArrayList<ContactBean>();
 		datastore = DatastoreServiceFactory.getDatastoreService();
 		
-		Query query = new Query(ContactBean.kind, KeyFactory.createKey("User",  UserServiceFactory.getUserService().getCurrentUser().getEmail()));
-					//	addFilter(	ContactBean.PROPERTY_CAT, Query.FilterOperator.EQUAL, category);
-	    
+		Query query = new Query(ContactBean.kind,ContactBean.parent);
+
+	    query.filter('ContactBean.PROPERTY_CAT =', category);
+
 		System.out.println(query.getKind() + " fetching! " + query.toString());
-		
 		for(Entity e : datastore.prepare(query).asIterable()){
 	    	list.add(new ContactBean(e));
-	    	System.out.println("ding!");
 	    }
 		
 		return list;

@@ -9,10 +9,11 @@
 		<tr>
 		<td>
 		        <div>
-				<form method="POST" action="deleteContact.do">
+				<form method="POST" action="updateContact.do">
 			
                     <input type="hidden" name="key" value=" ${contact.keyStr}"/>
-                    <input type="submit" class="remove" value="X"/>
+                    <input type="submit" class="remove" name = "button" value="remove"/>
+                    <input type="submit" class="edit" name = "button" value="edit"/>
                 </form>
 			
 				key : ${contact.keyStr} <br>
