@@ -1,5 +1,8 @@
 package webapp.help.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import webapp.help.beans.ContactBean;
@@ -18,7 +21,15 @@ public class AddContactAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request) {
+		List<String> errors = new ArrayList<String>();
+		request.setAttribute("errors",errors);
+		
 		ContactBean bean = ContactBean.createBean(request);
+		
+		errors.addAll(bean.getValidationErrors());
+		if(errors.size()>0){
+			return "veiewCategory.jsp";
+		}
 		
 		model.getContactsDAO().addContact(bean);		
 		return "addContacts.jsp";

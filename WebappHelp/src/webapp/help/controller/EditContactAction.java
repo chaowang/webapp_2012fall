@@ -1,5 +1,6 @@
 package webapp.help.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +26,16 @@ public class EditContactAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request) {
+		List<String> errors = new ArrayList<String>();
+		request.setAttribute("errors",errors);
+		
 		ContactBean bean = ContactBean.createBean(request);
+		
+		errors.addAll(bean.getValidationErrors());
+		if(errors.size()>0){
+			return "editContacts.jsp";
+		}
+		
 		Key key = KeyFactory.stringToKey(request.getParameter("keyStr"));
 		model.getContactsDAO().updateContacts(bean,key);	
 		
