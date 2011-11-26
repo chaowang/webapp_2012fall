@@ -23,6 +23,7 @@ public class ViewCategoryAction extends Action {
 	public String perform(HttpServletRequest request) {
 		List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 		request.setAttribute("list",list);
+		request.setAttribute("test", "does this work?");
 		System.out.println("retrieved list o size " + list.size());
 		//request.setAttribute("contact", list.get(0));
 		return "viewCategory.jsp";

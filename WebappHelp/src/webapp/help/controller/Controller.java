@@ -45,7 +45,7 @@ public class Controller extends HttpServlet {
 	    		return "landing.jsp";
 	    	}
 	    	else{
-	    		return "viewCategory.jsp";
+	    		return "viewCategory.do";
 	    	}
 	    }
 	    
