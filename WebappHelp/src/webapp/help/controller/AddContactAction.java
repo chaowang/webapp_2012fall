@@ -19,6 +19,7 @@ public class AddContactAction extends Action {
 	@Override
 	public String perform(HttpServletRequest request) {
 		ContactBean bean = ContactBean.createBean(request);
+		
 		model.getContactsDAO().addContact(bean);		
 		return "addContacts.jsp";
 	}

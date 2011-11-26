@@ -1,11 +1,10 @@
 package webapp.help.beans;
 import javax.servlet.http.HttpServletRequest;
-import webapp.help.utility.Category;
+
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 
 public class ContactBean{
