@@ -7,6 +7,10 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.UserServiceFactory;
 
+import edu.cmu.cs15437.photo.formbeans.ArrayList;
+import edu.cmu.cs15437.photo.formbeans.List;
+import edu.cmu.cs15437.photo.formbeans.String;
+
 public class ContactBean{
 	public static String kind = "Contact";
 	public static String PROPERTY_PARENT = "parent";
@@ -81,9 +85,19 @@ public class ContactBean{
 	public String getKeyStr() {return KeyFactory.keyToString(this.key);}
 	
 	
-	public static boolean Validate(ContactBean bean){
-		// TODO
-		return false;
+	
+	public List<String> getValidationErrors() {
+		List<String> errors = new ArrayList<String>();
+
+		if (name == null || name.length() == 0) {
+			errors.add("Name is required");
+		}
+
+		if (email == null || email.length() == 0) {
+			errors.add("Email is required");
+		}
+		
+		return errors;
 	}
 	
 	public static ContactBean createBean(HttpServletRequest req){

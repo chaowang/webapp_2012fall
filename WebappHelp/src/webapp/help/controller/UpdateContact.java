@@ -50,13 +50,13 @@ public class UpdateContact extends Action {
 			} catch (EntityNotFoundException e) {
 				// TODO Auto-generated catch block
 				errors.add(e.toString());
-				return "error.jsp";
+				return "veiewCategory.jsp";
 			}
 			
 		}
 		else{
 			errors.add("unknown action");
-			return "error.jsp";
+			return "veiewCategory.jsp";
 		}
 
 
