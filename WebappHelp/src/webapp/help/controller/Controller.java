@@ -102,7 +102,7 @@ public class Controller extends HttpServlet {
 	   		d.forward(request,response);
 	 }
 	 private static Pattern mobileDevicePattern = Pattern.compile("(iphone|ipod|blackberry|android|palm|windows\\s+ce)");
-	 private static BrowserType detectBrowser(HttpServletRequest request){
+	 public static BrowserType detectBrowser(HttpServletRequest request){
 		 Matcher matcher = mobileDevicePattern.matcher(request.getHeader("User-Agent"));
 		 if(matcher.matches())
 			 return BrowserType.Mobile;

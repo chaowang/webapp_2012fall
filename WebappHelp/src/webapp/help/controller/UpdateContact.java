@@ -42,7 +42,7 @@ public class UpdateContact extends Action {
 			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 			request.setAttribute("list",list);
 
-			return "viewCategory.jsp";
+			return "view/home.jsp";
 		}
 		else if(button.equals("edit")){
 			try {

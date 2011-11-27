@@ -47,8 +47,9 @@ public class ViewCategoryAction extends Action {
 		}
 		
 		request.setAttribute("list",list);
+		request.setAttribute("category", category);
 	
-		return "view/home.jsp";
+		return "view/Home.jsp";
 	}
 
 }
