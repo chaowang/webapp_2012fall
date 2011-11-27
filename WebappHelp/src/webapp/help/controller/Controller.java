@@ -1,5 +1,8 @@
 package webapp.help.controller;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import javax.servlet.http.*;
@@ -7,6 +10,8 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 
 import webapp.help.dao.Model;
+import webapp.help.utility.BrowserType;
+
 import com.google.appengine.api.users.User;
 @SuppressWarnings("serial")
 public class Controller extends HttpServlet {	
@@ -32,6 +37,7 @@ public class Controller extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException , ServletException {
 		String nextPage = performTheAction(req);
+		detectBrowser(req);
 		sendToNextPage(nextPage,req,resp);
 	}
 	
@@ -93,5 +99,13 @@ public class Controller extends HttpServlet {
 	    	}
 	   		RequestDispatcher d = request.getRequestDispatcher("/"+nextPage);
 	   		d.forward(request,response);
-	    }
+	 }
+	 private static Pattern mobileDevicePattern = Pattern.compile("(iphone|ipod|blackberry|android|palm|windows\\s+ce)");
+	 private static BrowserType detectBrowser(HttpServletRequest request){
+		 Matcher matcher = mobileDevicePattern.matcher(request.getHeader("User-Agent"));
+		 if(matcher.matches())
+			 return BrowserType.Mobile;
+		 else
+			 return BrowserType.Desktop;
+	 }
 }
