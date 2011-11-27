@@ -24,7 +24,7 @@ public class ViewCategoryAction extends Action {
 		List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 		request.setAttribute("list",list);
 	
-		return "/view/Home.jsp";
+		return "home.jsp";
 	}
 
 }
