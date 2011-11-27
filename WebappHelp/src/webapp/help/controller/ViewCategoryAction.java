@@ -1,5 +1,6 @@
 package webapp.help.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,13 +22,34 @@ public class ViewCategoryAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request) {
-		String category = request.getParameter("category");
-		category = (category==null?Category.GENERAL:category);
-		List<ContactBean> list = model.getContactsDAO().getContacts(category);
+		String category;
+		List<ContactBean> list;
+		
+		List<String> errors = new ArrayList<String>();
+		request.setAttribute("errors",errors);
+		
+		
+		category = request.getParameter("category");
+		if(category==null){
+			list = model.getContactsDAO().getContacts(Category.GENERAL);
+		}
+		else if(category.equals("General")){
+			list = model.getContactsDAO().getContacts(Category.GENERAL);
+		}else if(category.equals("Medical")){
+			list = model.getContactsDAO().getContacts(Category.MEDICAL);
+		}else if(category.equals("Car")){
+			list = model.getContactsDAO().getContacts(Category.CAR);
+		}else if(category.equals("Fire")){
+			list = model.getContactsDAO().getContacts(Category.FIRE);
+		}else{
+			errors.add("no such category");
+			list = model.getContactsDAO().getContacts(Category.GENERAL);
+		}
+		
 		request.setAttribute("list",list);
 		request.setAttribute("category", category);
 	
-		return "home.jsp";
+		return "view/Home.jsp";
 	}
 
 }
