@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import webapp.help.beans.ContactBean;
 import webapp.help.dao.Model;
+import webapp.help.utility.Category;
 
 public class AddContactAction extends Action {
 	public static String actionName="addContact.do";
@@ -28,11 +29,15 @@ public class AddContactAction extends Action {
 		
 		errors.addAll(bean.getValidationErrors());
 		if(errors.size()>0){
+			request.setAttribute("contact", bean);
 			return "addContacts.jsp";
 		}
 		
-		model.getContactsDAO().addContact(bean);		
-		return "veiewCategory.jsp";
+		model.getContactsDAO().addContact(bean);	
+		
+		List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
+		request.setAttribute("list",list);
+		return "viewCategory.jsp";
 	}
 
 }

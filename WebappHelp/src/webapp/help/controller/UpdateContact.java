@@ -50,12 +50,16 @@ public class UpdateContact extends Action {
 			} catch (EntityNotFoundException e) {
 				// TODO Auto-generated catch block
 				errors.add(e.toString());
+				List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
+				request.setAttribute("list",list);
 				return "veiewCategory.jsp";
 			}
 			
 		}
 		else{
 			errors.add("unknown action");
+			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
+			request.setAttribute("list",list);
 			return "veiewCategory.jsp";
 		}
 

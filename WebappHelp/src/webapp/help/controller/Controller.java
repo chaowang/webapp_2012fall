@@ -68,7 +68,7 @@ public class Controller extends HttpServlet {
 	
 	 private void sendToNextPage(String nextPage, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 	    	// System.out.println("nextPage="+nextPage);
-	    	
+	    	String safePage;
 	    	if (nextPage == null) {
 	    		response.sendError(HttpServletResponse.SC_NOT_FOUND,request.getServletPath());
 	    		return;
@@ -78,11 +78,16 @@ public class Controller extends HttpServlet {
 				String host  = request.getServerName();
 				String port  = ":"+String.valueOf(request.getServerPort());
 				if (port.equals(":80")) port = "";
-				response.sendRedirect("http://"+host+port+nextPage);
+				response.sendRedirect("https://"+host+port+nextPage);
 				return;
 	    	}
 	    	
-	    	if(nextPage.substring(0, 7).equals("http://")||nextPage.substring(0, 8).equals("https://")){
+	    	if(nextPage.substring(0, 7).equals("http://")){
+	    		safePage = "https://" + nextPage.substring(7, nextPage.length());
+	    		response.sendRedirect(safePage);
+				return;
+	    	}
+	    	if(nextPage.substring(0, 8).equals("https://")){
 	    		response.sendRedirect(nextPage);
 				return;
 	    	}
