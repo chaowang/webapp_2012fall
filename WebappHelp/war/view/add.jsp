@@ -73,10 +73,10 @@
 
 
 <SELECT id=u19 class="u19" name="category"  >
-<OPTION  value="General">General</OPTION>
-<OPTION  value="Medical">Medical</OPTION>
-<OPTION  value="Car">Car</OPTION>
-<OPTION  value="Fire">Fire</OPTION>
+<OPTION  value="GENERAL">General</OPTION>
+<OPTION  value="MEDICAL">Medical</OPTION>
+<OPTION  value="CAR">Car</OPTION>
+<OPTION  value="FIRE">Fire</OPTION>
 </SELECT>
 </form>
 <DIV id=u20_container class="u20_container">

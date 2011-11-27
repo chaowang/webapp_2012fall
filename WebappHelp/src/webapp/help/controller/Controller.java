@@ -27,6 +27,7 @@ public class Controller extends HttpServlet {
 		Action.add(new SendMessageAction(model));
 		Action.add(new LoginAction(model));
 		Action.add(new UpdateContact(model));
+		Action.add(new StartAdd(model));
 		System.err.println("initialized .... ");
 	}
 	@Override

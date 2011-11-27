@@ -54,7 +54,7 @@ public class UpdateContact extends Action {
 				errors.add(e.toString());
 				List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 				request.setAttribute("list",list);
-				return "veiewCategory.jsp";
+				return "view/home.jsp";
 			}
 			
 		}
@@ -62,7 +62,7 @@ public class UpdateContact extends Action {
 			errors.add("unknown action");
 			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 			request.setAttribute("list",list);
-			return "veiewCategory.jsp";
+			return "view/home.jsp";
 		}
 
 

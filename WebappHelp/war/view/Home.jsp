@@ -75,7 +75,7 @@
 <DIV id=u13 class="u13" >
 <DIV id=u13_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:36px;font-weight:bold;font-style:normal;text-decoration:none;color:#7F7F7F;"> +</span><span style="font-family:Century Gothic;font-size:36px;font-weight:normal;font-style:normal;text-decoration:none;color:#7F7F7F;">&nbsp;&nbsp; </span><span style="font-family:Century Gothic;font-size:20px;font-weight:normal;font-style:normal;text-decoration:none;color:#7F7F7F;">Add New&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span></p></DIV></DIV>
 </DIV>
-<a href="updateContact.do" ><IMG id=u12 src="view/resources/images/transparent.gif" class="u12"    ></a>
+<a href="startAdd.do" ><IMG id=u12 src="view/resources/images/transparent.gif" class="u12"    ></a>
 
 <DIV id=u14 class="u14" >
 <DIV id=u14_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:40px;font-weight:normal;font-style:normal;text-decoration:none;color:#1F497D;">Alex</span></p></DIV></DIV>
