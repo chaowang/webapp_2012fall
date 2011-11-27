@@ -84,7 +84,7 @@ public class Controller extends HttpServlet {
 				String host  = request.getServerName();
 				String port  = ":"+String.valueOf(request.getServerPort());
 				if (port.equals(":80")) port = "";
-				response.sendRedirect("https://"+host+port+nextPage);
+				response.sendRedirect("http://"+host+port+nextPage);
 				return;
 	    	}
 	    	
