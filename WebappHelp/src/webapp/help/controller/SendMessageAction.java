@@ -7,6 +7,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 import webapp.help.dao.Model;
+import webapp.help.utility.BrowserType;
 import webapp.help.utility.Category;
 import webapp.help.utility.Mailer;
 
@@ -24,15 +25,21 @@ public class SendMessageAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request) {
+		String category = request.getParameter("category");
 		double longitude = Double.parseDouble(request.getParameter("longitude"));
 		double latitude = Double.parseDouble(request.getParameter("latitude"));
-		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
 		
-		System.err.println("lol?");
-		Mailer.sendMesssages(model.getContactsDAO().getContacts(Category.GENERAL), longitude, latitude);
-		System.err.println(":)");;
-		return "/viewCategory.do";
+		if(category == null){
+			return "error.jsp";
+		}
+			
+		Mailer.sendMesssages(model.getContactsDAO().getContacts(category), longitude, latitude);
+		
+		
+		if(Controller.detectBrowser(request) == BrowserType.Desktop)
+			return "/viewCategory.do";
+		else
+			return "/cellView/medical.jsp";
 	}
 
 }

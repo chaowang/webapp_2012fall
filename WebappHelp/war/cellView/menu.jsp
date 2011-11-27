@@ -12,38 +12,41 @@
 <SCRIPT src="resources/scripts/axurerp_beforepagescript.js"></SCRIPT>
 <SCRIPT src="resources/scripts/messagecenter.js"></SCRIPT>
 <script>
-			function withPosition(position){				
-				var form = document.createElement("form");
-			    form.setAttribute("method", "get");
-			    form.setAttribute("action", "sendMessage.do");
-			
-				var hiddenField = document.createElement("input");
-			        hiddenField.setAttribute("type", "hidden");
-			        hiddenField.setAttribute("name", "longitude");
-			        hiddenField.setAttribute("value", position.coords.longitude);
-				form.appendChild(hiddenField);
+			function withPosition(category){	
+				return function(position){
+					var form = document.createElement("form");
+				    form.setAttribute("method", "get");
+				    form.setAttribute("action", "sendMessage.do");
 				
-				hiddenField = document.createElement("input");
-			        hiddenField.setAttribute("type", "hidden");
-			        hiddenField.setAttribute("name", "latitude");
-			        hiddenField.setAttribute("value", position.coords.latitude);
-				form.appendChild(hiddenField);
+					var hiddenField = document.createElement("input");
+				        hiddenField.setAttribute("type", "hidden");
+				        hiddenField.setAttribute("name", "longitude");
+				        hiddenField.setAttribute("value", position.coords.longitude);
+					form.appendChild(hiddenField);
+					
+					hiddenField = document.createElement("input");
+				        hiddenField.setAttribute("type", "hidden");
+				        hiddenField.setAttribute("name", "latitude");
+				        hiddenField.setAttribute("value", position.coords.latitude);
+					form.appendChild(hiddenField);
 				
-				hiddenField = document.createElement("input");
-			        hiddenField.setAttribute("type", "hidden");
-			        hiddenField.setAttribute("name", "category");
-			        hiddenField.setAttribute("value", category);
-				form.appendChild(hiddenField);
-			
-			    document.body.appendChild(form);
-			    form.submit();
+					hiddenField = document.createElement("input");
+				        hiddenField.setAttribute("type", "hidden");
+				        hiddenField.setAttribute("name", "category");
+				        hiddenField.setAttribute("value", category);
+					form.appendChild(hiddenField);
+				
+				    document.body.appendChild(form);
+				    form.submit();
+				};		
 			}
 			function withError(error){
 			}
 		
 			function getGeoAndSubmit(){
 				if (navigator.geolocation){
-					navigator.geolocation.getCurrentPosition(withPosition,withError);
+					navigator.geolocation.getCurrentPosition(withPosition("CAR"),withError);
+					
 				}			
 				return true;
 			}				
@@ -65,28 +68,28 @@
 <DIV id=u3 class="u3" >
 <DIV id=u3_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">General</span></p></DIV></DIV>
 </DIV>
-<a href="/sendMessage.do?category=GENERAL"><IMG id=u2 src="resources/images/transparent.gif" class="u2"    ></a>
+<button onClick="getGeoAndSubmit('GENERAL')"><IMG id=u2 src="resources/images/transparent.gif" class="u2"/></button>
 
 <DIV id=u4_container class="u4_container">
 <DIV id="u4_img" class="u4_original"></DIV>
 <DIV id=u5 class="u5" >
 <DIV id=u5_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">Medical</span></p></DIV></DIV>
 </DIV>
-<a href="/sendMessage.do?category=MEDICAL"><IMG id=u4 src="resources/images/transparent.gif" class="u4"    ></a>
+<button onClick="getGeoAndSubmit('CAR')"><IMG id=u4 src="resources/images/transparent.gif" class="u4"/></button>
 
 <DIV id=u6_container class="u6_container">
 <DIV id="u6_img" class="u6_original"></DIV>
 <DIV id=u7 class="u7" >
 <DIV id=u7_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">Car</span></p></DIV></DIV>
 </DIV>
-<a href="/sendMessage.do?category=CAR"><IMG id=u6 src="resources/images/transparent.gif" class="u6"    ></a>
+<button onClick="getGeoAndSubmit('MEDICAL')"><IMG id=u6 src="resources/images/transparent.gif" class="u6"/></button>
 
 <DIV id=u8_container class="u8_container">
 <DIV id="u8_img" class="u8_original"></DIV>
 <DIV id=u9 class="u9" >
 <DIV id=u9_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">Fire</span></p></DIV></DIV>
 </DIV>
-<a href="/sendMessage.do?category=Fire"><IMG id=u8 src="resources/images/transparent.gif" class="u8"    ></a>
+<button onClick="getGeoAndSubmit('FIRE')"><IMG id=u8 src="resources/images/transparent.gif" class="u8"/></button>
 
 <DIV id=u10_container class="u10_container">
 <DIV id="u10_img" class="u10_original"></DIV>

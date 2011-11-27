@@ -37,7 +37,7 @@ public class AddContactAction extends Action {
 		
 		List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 		request.setAttribute("list",list);
-		return "viewCategory.jsp";
+		return "/viewCategory.do";
 	}
 
 }

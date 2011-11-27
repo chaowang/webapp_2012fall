@@ -4,4 +4,4 @@
 * change the cell view to use relative demensions
 * redirect to https
 * more error detection
-
+* actually use category

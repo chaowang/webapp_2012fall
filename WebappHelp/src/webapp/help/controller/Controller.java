@@ -84,7 +84,7 @@ public class Controller extends HttpServlet {
 				String host  = request.getServerName();
 				String port  = ":"+String.valueOf(request.getServerPort());
 				if (port.equals(":80")) port = "";
-				response.sendRedirect("https://"+host+port+nextPage);
+				response.sendRedirect("http://"+host+port+nextPage);
 				return;
 	    	}
 	    	
@@ -101,7 +101,7 @@ public class Controller extends HttpServlet {
 	   		d.forward(request,response);
 	 }
 	 private static Pattern mobileDevicePattern = Pattern.compile("(iphone|ipod|blackberry|android|palm|windows\\s+ce)");
-	 private static BrowserType detectBrowser(HttpServletRequest request){
+	 public static BrowserType detectBrowser(HttpServletRequest request){
 		 Matcher matcher = mobileDevicePattern.matcher(request.getHeader("User-Agent"));
 		 if(matcher.matches())
 			 return BrowserType.Mobile;
