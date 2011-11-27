@@ -87,15 +87,16 @@ public class Controller extends HttpServlet {
 				response.sendRedirect("http://"+host+port+nextPage);
 				return;
 	    	}
-	    	
-	    	if(nextPage.substring(0, 7).equals("http://")){
-	    		safePage = "https://" + nextPage.substring(7, nextPage.length());
-	    		response.sendRedirect(safePage);
-				return;
-	    	}
-	    	if(nextPage.substring(0, 8).equals("https://")){
-	    		response.sendRedirect(nextPage);
-				return;
+	    	if(nextPage.length()>7){
+	    		if(nextPage.substring(0, 7).equals("http://")){
+	    			safePage = "https://" + nextPage.substring(7, nextPage.length());
+	    			response.sendRedirect(safePage);
+	    			return;
+	    		}
+	    		if(nextPage.substring(0, 8).equals("https://")){
+	    			response.sendRedirect(nextPage);
+	    			return;
+	    		}
 	    	}
 	   		RequestDispatcher d = request.getRequestDispatcher("/"+nextPage);
 	   		d.forward(request,response);

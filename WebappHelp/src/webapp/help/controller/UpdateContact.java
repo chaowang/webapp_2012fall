@@ -30,13 +30,14 @@ public class UpdateContact extends Action {
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors",errors);
 		String keyStr = request.getParameter("key");
-
-		Key key =KeyFactory.stringToKey(keyStr);
+		Key key=KeyFactory.stringToKey(keyStr);
+		
 
 		String button;
 		button = request.getParameter("button");
-
+	
 		if(button.equals("remove")){
+		
 			model.getContactsDAO().deleteContact(key);
 			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 			request.setAttribute("list",list);
@@ -45,6 +46,7 @@ public class UpdateContact extends Action {
 		}
 		else if(button.equals("edit")){
 			try {
+				
 				request.setAttribute("contact", model.getContactsDAO().getContact(key));
 				return "editContacts.jsp";
 			} catch (EntityNotFoundException e) {

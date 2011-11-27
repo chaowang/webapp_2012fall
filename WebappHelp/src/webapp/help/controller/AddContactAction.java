@@ -22,22 +22,46 @@ public class AddContactAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request) {
+		String button;
+		ContactBean bean;
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors",errors);
 		
-		ContactBean bean = ContactBean.createBean(request);
+		button = request.getParameter("button");
 		
-		errors.addAll(bean.getValidationErrors());
-		if(errors.size()>0){
-			request.setAttribute("contact", bean);
-			return "addContacts.jsp";
+		if(button.equals("cancel")){
+			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
+			request.setAttribute("list",list);
+			return "viewCategory.jsp";
+		}else if (button.equals("save")){
+			bean = ContactBean.createBean(request);
+			
+			errors.addAll(bean.getValidationErrors());
+			if(errors.size()>0){
+				request.setAttribute("contact", bean);
+				return "add.jsp";
+			}
+			
+			model.getContactsDAO().addContact(bean);
+			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
+			request.setAttribute("list",list);
+			return "viewCategory.jsp";
 		}
+		else{
+			bean = ContactBean.createBean(request);
+			errors.add("unknown button");
+			request.setAttribute("contact", bean);
+			return "add.jsp";
+			
+		}
+			
 		
-		model.getContactsDAO().addContact(bean);	
 		
-		List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
-		request.setAttribute("list",list);
-		return "viewCategory.jsp";
+		
+		
+			
+		
+		
 	}
 
 }
