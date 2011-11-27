@@ -68,28 +68,28 @@
 <DIV id=u3 class="u3" >
 <DIV id=u3_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">General</span></p></DIV></DIV>
 </DIV>
-<button onClick="getGeoAndSubmit('GENERAL')"><IMG id=u2 src="resources/images/transparent.gif" class="u2"/></button>
+<button onClick="getGeoAndSubmit('General')"><IMG id=u2 src="resources/images/transparent.gif" class="u2"/></button>
 
 <DIV id=u4_container class="u4_container">
 <DIV id="u4_img" class="u4_original"></DIV>
 <DIV id=u5 class="u5" >
 <DIV id=u5_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">Medical</span></p></DIV></DIV>
 </DIV>
-<button onClick="getGeoAndSubmit('CAR')"><IMG id=u4 src="resources/images/transparent.gif" class="u4"/></button>
+<button onClick="getGeoAndSubmit('Car')"><IMG id=u4 src="resources/images/transparent.gif" class="u4"/></button>
 
 <DIV id=u6_container class="u6_container">
 <DIV id="u6_img" class="u6_original"></DIV>
 <DIV id=u7 class="u7" >
 <DIV id=u7_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">Car</span></p></DIV></DIV>
 </DIV>
-<button onClick="getGeoAndSubmit('MEDICAL')"><IMG id=u6 src="resources/images/transparent.gif" class="u6"/></button>
+<button onClick="getGeoAndSubmit('Medical')"><IMG id=u6 src="resources/images/transparent.gif" class="u6"/></button>
 
 <DIV id=u8_container class="u8_container">
 <DIV id="u8_img" class="u8_original"></DIV>
 <DIV id=u9 class="u9" >
 <DIV id=u9_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:28px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">Fire</span></p></DIV></DIV>
 </DIV>
-<button onClick="getGeoAndSubmit('FIRE')"><IMG id=u8 src="resources/images/transparent.gif" class="u8"/></button>
+<button onClick="getGeoAndSubmit('Fire')"><IMG id=u8 src="resources/images/transparent.gif" class="u8"/></button>
 
 <DIV id=u10_container class="u10_container">
 <DIV id="u10_img" class="u10_original"></DIV>
