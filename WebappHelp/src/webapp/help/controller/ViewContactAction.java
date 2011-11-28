@@ -44,6 +44,7 @@ public class ViewContactAction extends Action {
 			key = KeyFactory.stringToKey(keyStr);
 			bean = model.getContactsDAO().getContact(key);
 			request.setAttribute("currContact", bean);
+			request.setAttribute("keyStr",keyStr);
 		} catch (EntityNotFoundException e) {
 			// TODO Auto-generated catch block
 			errors.add("can not find the contact");

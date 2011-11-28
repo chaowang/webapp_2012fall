@@ -45,6 +45,8 @@ public class AddContactAction extends Action {
 			model.getContactsDAO().addContact(bean);
 			List<ContactBean> list = model.getContactsDAO().getContacts(bean.getCategory());
 			request.setAttribute("list",list);
+			request.setAttribute("currContact", bean);
+			request.setAttribute("keyStr", bean.getKey());
 			return "view/Home.jsp";
 		}
 		else{
