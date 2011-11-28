@@ -60,14 +60,19 @@ function viewContact(keyStr) {
 <DIV id=u9_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">General</span></p></DIV></DIV>
 </DIV><a href="viewCategory.do?category=General">
 <IMG id=u8 src="view/resources/images/transparent.gif" class="u8"    ></a>
-
 <SELECT id=u10 size=2 class="u10"   >
 
 <c:if test="${!(empty list)}">
-	
+		
 		<c:forEach var="contact" items="${list}">
-			     <OPTION onclick="viewContact('${contact.keyStr}')" >${contact.name}</OPTION>
- 	
+			<c:choose>
+			<c:when test="${contact.keyStr == keyStr}">
+				<OPTION onclick="viewContact('${contact.keyStr}')" selected="selected">${contact.name}</OPTION>
+ 			</c:when>
+ 			<c:otherwise>
+ 				<OPTION onclick="viewContact('${contact.keyStr}')" >${contact.name}</OPTION>
+ 			</c:otherwise>
+ 			</c:choose>
 		</c:forEach>
 	
 </c:if>
