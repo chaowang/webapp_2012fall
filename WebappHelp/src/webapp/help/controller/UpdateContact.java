@@ -42,7 +42,7 @@ public class UpdateContact extends Action {
 			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 			request.setAttribute("list",list);
 
-			return "view/home.jsp";
+			return "view/Home.jsp";
 		}
 		else if(button.equals("edit")){
 			try {
@@ -54,7 +54,7 @@ public class UpdateContact extends Action {
 				errors.add(e.toString());
 				List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 				request.setAttribute("list",list);
-				return "view/home.jsp";
+				return "view/Home.jsp";
 			}
 			
 		}
@@ -62,7 +62,7 @@ public class UpdateContact extends Action {
 			errors.add("unknown action");
 			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 			request.setAttribute("list",list);
-			return "view/home.jsp";
+			return "view/Home.jsp";
 		}
 
 

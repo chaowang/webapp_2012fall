@@ -32,7 +32,7 @@ public class AddContactAction extends Action {
 		if(button.equals("cancel")){
 			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 			request.setAttribute("list",list);
-			return "view/home.jsp";
+			return "view/Home.jsp";
 		}else if (button.equals("save")){
 			bean = ContactBean.createBean(request);
 			
@@ -45,7 +45,7 @@ public class AddContactAction extends Action {
 			model.getContactsDAO().addContact(bean);
 			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 			request.setAttribute("list",list);
-			return "view/home.jsp";
+			return "view/Home.jsp";
 		}
 		else{
 			bean = ContactBean.createBean(request);

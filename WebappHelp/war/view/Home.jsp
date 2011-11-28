@@ -58,7 +58,7 @@
 <c:if test="${!(empty list)}">
 	
 		<c:forEach var="contact" items="${list}">
-			     <a href="view.do?keyStr=${contact.keyStr}"> <OPTION  value="${contact.name}">${contact.name}  3</OPTION></a>
+			     <a href="view.do?keyStr=${contact.keyStr}"> <OPTION  value="${contact.name}">${contact.name}</OPTION></a>
  	
 		</c:forEach>
 	
