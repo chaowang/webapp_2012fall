@@ -128,6 +128,9 @@ public class ContactBean{
 	    	for(int i=0;i<email.length();i++){
 	    		if(email.charAt(i)=='@')
 	    			identifierPos=i;
+	    		
+	    		if(email.charAt(i)==' ')
+	    			return false;
 	    		/*
 	    		if(!(email.charAt(i)>32 && email.charAt(i)<128) )
 	    			printable=false;
@@ -163,7 +166,7 @@ public class ContactBean{
          
 	    	//check if the phone has @
 	    	for(int i=0;i<phone.length();i++){
-	    		if ((phone.charAt(i) >= 'A' && phone.charAt(i) <= 'Z') || phone.charAt(i) >= 'a' &&phone.charAt(i) <= 'z'){ 
+	    		if ((phone.charAt(i) >= '0' && phone.charAt(i) <= '9') ){ 
 	    		
 	    		  return true;
 	    		}

@@ -29,41 +29,23 @@ function viewContact(keyStr) {
 </HEAD>
 <BODY>
 <DIV class="main_container">
-  <DIV id=u0_container class="u0_container">
-  <DIV id="u0_img" class="u0_original"></DIV>
+<jsp:include page="error-list.jsp" />
+<DIV id=u0_container class="u0_container">
+<DIV id="u0_img" class="u0_original"></DIV>
 <DIV id=u1 class="u1" >
 <DIV id=u1_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">Fire</span></p></DIV></DIV>
-</DIV><a href="viewCategory.do?category=FIRE">
+</DIV><a href="viewCategory.do?category=Fire">
 <IMG id=u0 src="view/resources/images/transparent.gif" class="u0"    ></a>
 
 <DIV id=u2_container class="u2_container">
 <DIV id="u2_img" class="u2_original"></DIV>
 <DIV id=u3 class="u3" >
 <DIV id=u3_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">Car</span></p></DIV></DIV>
-</DIV><a href="viewCategory.do?category=CAR">
+</DIV><a href="viewCategory.do?category=Car">
 <IMG id=u2 src="view/resources/images/transparent.gif" class="u2"    ></a>
 
 <DIV id=u4_container class="u4_container">
-<c:choose>
-			<c:when test="${category == 'GENERAL'}">
-				<DIV id="u4_img" class="u4_original" style=" background-image: url('view/Home_files/u4_General.png')	;"></DIV>
- 			</c:when>
- 			<c:when test="${category == 'MEDICAL'}">
-				<DIV id="u4_img" class="u4_original" style=" background-image: url('view/Home_files/u4_Medical.png')	;"></DIV>
- 			</c:when>
- 			<c:when test="${category == 'CAR'}">
-				<DIV id="u4_img" class="u4_original" style=" background-image: url('view/Home_files/u4_Car.png')	;"></DIV>
- 			</c:when>
- 			<c:when test="${category == 'FIRE'}">
-				<DIV id="u4_img" class="u4_original" style=" background-image: url('view/Home_files/u4_Fire.png')	;"></DIV>
- 			</c:when>
- 			<c:otherwise>
- 				<DIV id="u4_img" class="u4_original" style=" background-image: url('view/Home_files/u4_General.png')	;"></DIV>
- 			</c:otherwise>
- 			
- </c:choose>
- 
-
+<DIV id="u4_img" class="u4_original"></DIV>
 <DIV id=u5 class="u5" >
 <DIV id=u5_rtf>&nbsp;</DIV></DIV>
 </DIV>
@@ -73,14 +55,14 @@ function viewContact(keyStr) {
 <DIV id="u6_img" class="u6_original"></DIV>
 <DIV id=u7 class="u7" >
 <DIV id=u7_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">Medical</span></p></DIV></DIV>
-</DIV><a href="viewCategory.do?category=MEDICAL">
+</DIV><a href="viewCategory.do?category=Medical">
 <IMG id=u6 src="view/resources/images/transparent.gif" class="u6"    ></a>
 
 <DIV id=u8_container class="u8_container">
 <DIV id="u8_img" class="u8_original"></DIV>
 <DIV id=u9 class="u9" >
 <DIV id=u9_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">General</span></p></DIV></DIV>
-</DIV><a href="viewCategory.do?category=GENERAL">
+</DIV><a href="viewCategory.do?category=General">
 <IMG id=u8 src="view/resources/images/transparent.gif" class="u8"    ></a>
 <SELECT id=u10 size=2 class="u10"   >
 
@@ -89,10 +71,10 @@ function viewContact(keyStr) {
 		<c:forEach var="contact" items="${list}">
 			<c:choose>
 			<c:when test="${contact.keyStr == keyStr}">
-				<OPTION onClick="viewContact('${contact.keyStr}')" selected="selected">${contact.name}</OPTION>
+				<OPTION onclick="viewContact('${contact.keyStr}')" selected="selected">${contact.name}</OPTION>
  			</c:when>
  			<c:otherwise>
- 				<OPTION onClick="viewContact('${contact.keyStr}')" >${contact.name}</OPTION>
+ 				<OPTION onclick="viewContact('${contact.keyStr}')" >${contact.name}</OPTION>
  			</c:otherwise>
  			</c:choose>
 		</c:forEach>
@@ -154,7 +136,6 @@ function viewContact(keyStr) {
 </form>
  
 </DIV>
-<jsp:include page="error-list.jsp" />
 <DIV class=preload>
 <img src="view/Home_files/u0_original.png" width="1" height="1"/>
 <img src="view/Home_files/u2_original.png" width="1" height="1"/>

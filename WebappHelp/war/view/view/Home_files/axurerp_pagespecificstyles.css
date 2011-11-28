@@ -113,6 +113,9 @@ div.main_container {
     height:40px
 }
 
+.u4_original {
+    background-image: url('../Home_files/u4_original.png');
+}
 
 .u4_container {
     position:absolute;
@@ -314,7 +317,7 @@ div.main_container {
     position:absolute;
     left:290px;
     top:320px;
-    width:450px;
+    width:150px;
     height:50px;
     ;
     ;

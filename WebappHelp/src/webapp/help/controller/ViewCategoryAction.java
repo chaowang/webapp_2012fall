@@ -30,6 +30,10 @@ public class ViewCategoryAction extends Action {
 		
 		
 		category = request.getParameter("category");
+		if(category==null)
+		{
+			category = Category.GENERAL;
+		}
 		if(category==null){
 			list = model.getContactsDAO().getContacts(Category.GENERAL);
 		}
