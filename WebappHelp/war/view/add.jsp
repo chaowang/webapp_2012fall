@@ -1,4 +1,11 @@
+
+
 <HTML><HEAD>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+
+<%@ page import="webapp.help.utility.Category" %>
+
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="imagetoolbar" content="no">
 <link href="view/resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet">
@@ -70,13 +77,47 @@
 <INPUT id=u16 type=submit class="u16"  name="button" value="cancel"  >
 
 <INPUT id=u17 type=submit class="u17" name="button"  value="save"  >
+ <SELECT id=u19 class="u19" name="category">
+				<c:choose>
+					<c:when test="${contact.category == 'GENERAL'}">
+
+					<OPTION selected value="GENERAL">GENERAL</OPTION>
+					<OPTION  value="MEDICAL">MEDICAL</OPTION>
+					<OPTION  value="CAR">CAR</OPTION>
+					<OPTION  value="FIRE">FIRE</OPTION>
+					</c:when>
+					<c:when test="${contact.category == 'MEDICAL'}">
+
+					<OPTION value="GENERAL">GENERAL</OPTION>
+					<OPTION selected  value="MEDICAL">MEDICAL</OPTION>
+					<OPTION  value="CAR">CAR</OPTION>
+					<OPTION  value="FIRE">FIRE</OPTION>
+					</c:when>
+					<c:when test="${contact.category == 'CAR'}">
+
+					<OPTION value="GENERAL">GENERAL</OPTION>
+					<OPTION  value="MEDICAL">MEDICAL</OPTION>
+					<OPTION selected value="CAR">CAR</OPTION>
+					<OPTION  value="FIRE">FIRE</OPTION>
+					</c:when>
+					<c:when test="${contact.category == 'FIRE'}">
+
+					<OPTION value="GENERAL">GENERAL</OPTION>
+					<OPTION  value="MEDICAL">MEDICAL</OPTION>
+					<OPTION  value="CAR">CAR</OPTION>
+					<OPTION selected value="FIRE">FIRE</OPTION>
+					</c:when>
+					<c:otherwise>
+					<OPTION  value="GENERAL">GENERAL</OPTION>
+					<OPTION  value="MEDICAL">MEDICAL</OPTION>
+					<OPTION  value="CAR">CAR</OPTION>
+					<OPTION  value="FIRE">FIRE</OPTION>
+					
+    
+    </c:otherwise>
+				</c:choose>
 
 
-<SELECT id=u19 class="u19" name="category"  >
-<OPTION  value="GENERAL">General</OPTION>
-<OPTION  value="MEDICAL">Medical</OPTION>
-<OPTION  value="CAR">Car</OPTION>
-<OPTION  value="FIRE">Fire</OPTION>
 </SELECT>
 </form>
 <DIV id=u20_container class="u20_container">

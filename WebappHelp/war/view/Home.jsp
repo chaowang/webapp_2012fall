@@ -14,6 +14,10 @@
 <SCRIPT src="view/resources/scripts/jquery-ui-1.8.10.custom.min.js"></SCRIPT>
 <SCRIPT src="view/resources/scripts/axurerp_beforepagescript.js"></SCRIPT>
 <SCRIPT src="view/resources/scripts/messagecenter.js"></SCRIPT>
+<script type="text/javascript" src="ajax.js"> </script>
+<script type="text/javascript" src="advanced-search.js"> </script>
+
+<% response.setHeader("Content-Type","text/xml"); %>
 </HEAD>
 <BODY>
 <DIV class="main_container">
@@ -58,7 +62,7 @@
 <c:if test="${!(empty list)}">
 	
 		<c:forEach var="contact" items="${list}">
-			     <a href="view.do?keyStr=${contact.keyStr}"> <OPTION  value="${contact.name}">${contact.name}</OPTION></a>
+			     <OPTION onclick="viewContact('${contact.keyStr}')" >${contact.name}</OPTION>
  	
 		</c:forEach>
 	
@@ -67,6 +71,7 @@
 
 
 </SELECT>
+
 
 <DIV id=u11 class="u11" >
 <DIV id=u11_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:16px;font-weight:normal;font-style:normal;text-decoration:underline;color:#4BACC6;">Logout</span></p></DIV></DIV>
@@ -78,7 +83,7 @@
 <a href="startAdd.do" ><IMG id=u12 src="view/resources/images/transparent.gif" class="u12"    ></a>
 
 <DIV id=u14 class="u14" >
-<DIV id=u14_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:40px;font-weight:normal;font-style:normal;text-decoration:none;color:#1F497D;">Alex</span></p></DIV></DIV>
+<DIV id=u14_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:40px;font-weight:normal;font-style:normal;text-decoration:none;color:#1F497D;">${curContact.name}</span></p></DIV></DIV>
 <DIV id=u15_container class="u15_container">
 <DIV id="u15_img" class="u15_original"></DIV>
 <DIV id=u16 class="u16" >

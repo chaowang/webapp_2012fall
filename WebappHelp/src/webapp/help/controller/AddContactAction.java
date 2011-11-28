@@ -43,7 +43,7 @@ public class AddContactAction extends Action {
 			}
 			
 			model.getContactsDAO().addContact(bean);
-			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
+			List<ContactBean> list = model.getContactsDAO().getContacts(bean.getCategory());
 			request.setAttribute("list",list);
 			return "view/Home.jsp";
 		}
