@@ -1,5 +1,9 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 
 <HTML><HEAD>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -76,9 +80,12 @@ function viewContact(keyStr) {
 
 </SELECT>
 
-
+<%
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+ %>
 <DIV id=u11 class="u11" >
-<DIV id=u11_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:16px;font-weight:normal;font-style:normal;text-decoration:underline;color:#4BACC6;">Logout</span></p></DIV></DIV>
+<DIV id=u11_rtf><a href="<%= userService.createLogoutURL("/landing.jsp") %>">logout</a></DIV></DIV>
 <DIV id=u12_container class="u12_container">
 <DIV id="u12_img" class="u12_original"></DIV>
 <DIV id=u13 class="u13" >

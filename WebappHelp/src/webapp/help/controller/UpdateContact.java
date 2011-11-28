@@ -30,7 +30,7 @@ public class UpdateContact extends Action {
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors",errors);
 		String keyStr = request.getParameter("keyStr");
-		if(keyStr==null){
+		if(keyStr==null||keyStr.equals(" ")){
 			errors.add("no contact is selected");
 			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
 			request.setAttribute("list",list);

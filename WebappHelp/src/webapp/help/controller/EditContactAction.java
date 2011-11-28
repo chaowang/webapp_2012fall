@@ -10,7 +10,6 @@ import com.google.appengine.api.datastore.KeyFactory;
 
 import webapp.help.beans.ContactBean;
 import webapp.help.dao.Model;
-import webapp.help.utility.Category;
 
 public class EditContactAction extends Action {
 	public static String actionName="editContact.do";
