@@ -74,9 +74,7 @@
 
 <INPUT id=u15 type=text name="msg"  value="${contact.message}" class="u15"     >
 
-<INPUT id=u16 type=submit class="u16"  name="button" value="cancel"  >
 
-<INPUT id=u17 type=submit class="u17" name="button"  value="save"  >
  <SELECT id=u19 class="u19" name="category">
 				<c:choose>
 					<c:when test="${contact.category == 'GENERAL'}">
@@ -119,6 +117,9 @@
 
 
 </SELECT>
+<INPUT id=u16 type=submit class="u16"  name="button" value="cancel"  >
+
+<INPUT id=u17 type=submit class="u17" name="button"  value="save"  >
 </form>
 <DIV id=u20_container class="u20_container">
 <DIV id="u20_img" class="u20_original"></DIV>

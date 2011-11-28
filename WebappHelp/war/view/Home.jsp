@@ -14,10 +14,14 @@
 <SCRIPT src="view/resources/scripts/jquery-ui-1.8.10.custom.min.js"></SCRIPT>
 <SCRIPT src="view/resources/scripts/axurerp_beforepagescript.js"></SCRIPT>
 <SCRIPT src="view/resources/scripts/messagecenter.js"></SCRIPT>
-<script type="text/javascript" src="ajax.js"> </script>
-<script type="text/javascript" src="advanced-search.js"> </script>
 
-<% response.setHeader("Content-Type","text/xml"); %>
+<script type="text/javascript">
+function viewContact(keyStr) {
+	
+	document.location.href = 'viewContact.do?keyStr='+keyStr;
+	
+}
+</script>
 </HEAD>
 <BODY>
 <DIV class="main_container">
@@ -83,25 +87,25 @@
 <a href="startAdd.do" ><IMG id=u12 src="view/resources/images/transparent.gif" class="u12"    ></a>
 
 <DIV id=u14 class="u14" >
-<DIV id=u14_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:40px;font-weight:normal;font-style:normal;text-decoration:none;color:#1F497D;">${curContact.name}</span></p></DIV></DIV>
+<DIV id=u14_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:25px;font-weight:normal;font-style:normal;text-decoration:none;color:#1F497D;">${currContact.name}</span></p></DIV></DIV>
 <DIV id=u15_container class="u15_container">
 <DIV id="u15_img" class="u15_original"></DIV>
 <DIV id=u16 class="u16" >
-<DIV id=u16_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#7F7F7F;">812-345-2345</span></p></DIV></DIV>
+<DIV id=u16_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#7F7F7F;">${currContact.phone}</span></p></DIV></DIV>
 </DIV>
 <IMG id=u15 src="view/resources/images/transparent.gif" class="u15"    >
 
 <DIV id=u17_container class="u17_container">
 <DIV id="u17_img" class="u17_original"></DIV>
 <DIV id=u18 class="u18" >
-<DIV id=u18_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#7F7F7F;">alex@gmail.com</span></p></DIV></DIV>
+<DIV id=u18_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#7F7F7F;">${currContact.email}</span></p></DIV></DIV>
 </DIV>
 <IMG id=u17 src="view/resources/images/transparent.gif" class="u17"    >
 
 <DIV id=u19_container class="u19_container">
 <DIV id="u19_img" class="u19_original"></DIV>
 <DIV id=u20 class="u20" >
-<DIV id=u20_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#7F7F7F;">Please come to help me!!!</span></p></DIV></DIV>
+<DIV id=u20_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#7F7F7F;">${currContact.message}</span></p></DIV></DIV>
 </DIV>
 <IMG id=u19 src="view/resources/images/transparent.gif" class="u19"    >
 
@@ -112,9 +116,13 @@
 </DIV>
 <IMG id=u21 src="view/resources/images/transparent.gif" class="u21"    >
 
-<INPUT id=u23 type=submit class="u23" value="Delete"  >
-
-<INPUT id=u24 type=submit class="u24" value="Edit"  >
+<form method="POST" action="updateContact.do">
+			
+                    <input type="hidden" name="keyStr" value=" ${currContact.keyStr}"/>
+                    <input  id=u23 type=submit class="u23" name = "button" value="remove"/>
+                    <input id=u24 type=submit class="u24" name = "button" value="edit"/>
+</form>
+ 
 </DIV>
 <DIV class=preload>
 <img src="view/Home_files/u0_original.png" width="1" height="1"/>

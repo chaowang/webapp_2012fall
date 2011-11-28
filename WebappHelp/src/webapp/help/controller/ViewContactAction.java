@@ -50,7 +50,9 @@ public class ViewContactAction extends Action {
 			return "view/Home.jsp";
 		}
 		//return "view/Home.jsp";
-		return "error.jsp";
+		List<ContactBean> list = model.getContactsDAO().getContacts(bean.getCategory());
+		request.setAttribute("list",list);
+		return "view/Home.jsp";
 	}
 
 }

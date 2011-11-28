@@ -29,7 +29,7 @@ public class UpdateContact extends Action {
 
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors",errors);
-		String keyStr = request.getParameter("key");
+		String keyStr = request.getParameter("keyStr");
 		Key key=KeyFactory.stringToKey(keyStr);
 		
 
@@ -48,7 +48,7 @@ public class UpdateContact extends Action {
 			try {
 				
 				request.setAttribute("contact", model.getContactsDAO().getContact(key));
-				return "editContacts.jsp";
+				return "view/edit.jsp";
 			} catch (EntityNotFoundException e) {
 				// TODO Auto-generated catch block
 				errors.add(e.toString());

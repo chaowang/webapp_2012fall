@@ -99,6 +99,10 @@ public class ContactBean{
 			errors.add("Email is in wrong format");
 		}
 		
+		if(!verifyPhone(phone)){
+			errors.add("phone number is in wrong format");
+		}
+		
 		return errors;
 	}
 	
@@ -117,9 +121,9 @@ public class ContactBean{
 	    	int identifierPos=-1;
 	    	int periodPos=-1;
 
-            if(email==null||email.length()==0)
-            	return false;
-            
+         if(email==null||email.length()==0)
+         	return false;
+         
 	    	//check if the email has @
 	    	for(int i=0;i<email.length();i++){
 	    		if(email.charAt(i)=='@')
@@ -151,5 +155,24 @@ public class ContactBean{
 	    		return false;
 	    	*/
 	    	return true;
+	    }
+	 private boolean verifyPhone(String phone){
+	    	
+         if(phone==null||phone.length()==0)
+         	return true;
+         
+	    	//check if the phone has @
+	    	for(int i=0;i<phone.length();i++){
+	    		if ((phone.charAt(i) >= 'A' && phone.charAt(i) <= 'Z') || phone.charAt(i) >= 'a' &&phone.charAt(i) <= 'z'){ 
+	    		
+	    		  return true;
+	    		}
+	    		/*
+	    		if(!(phone.charAt(i)>32 && phone.charAt(i)<128) )
+	    			printable=false;
+	    		*/
+	    	}
+	    	
+	    	return false;
 	    }
 }
