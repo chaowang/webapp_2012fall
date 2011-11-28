@@ -30,12 +30,18 @@ public class UpdateContact extends Action {
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors",errors);
 		String keyStr = request.getParameter("keyStr");
+		if(keyStr==null){
+			errors.add("no contact is selected");
+			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
+			request.setAttribute("list",list);
+			return "view/Home.jsp";
+		}
 		Key key=KeyFactory.stringToKey(keyStr);
 		
 
 		String button;
 		button = request.getParameter("button");
-	
+		
 		if(button.equals("remove")){
 		
 			model.getContactsDAO().deleteContact(key);

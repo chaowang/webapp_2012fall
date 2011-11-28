@@ -25,7 +25,7 @@ function viewContact(keyStr) {
 </HEAD>
 <BODY>
 <DIV class="main_container">
-
+<jsp:include page="error-list.jsp" />
 <DIV id=u0_container class="u0_container">
 <DIV id="u0_img" class="u0_original"></DIV>
 <DIV id=u1 class="u1" >
