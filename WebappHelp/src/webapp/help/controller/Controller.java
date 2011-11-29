@@ -51,10 +51,18 @@ public class Controller extends HttpServlet {
 	    // first landing
 	    if(actionName == null || actionName.length() == 0){
 	    	if(user == null){
-	    		return "landing.jsp";
+	    		if(detectBrowser(request) == BrowserType.Desktop){
+	    			return "landing.jsp";
+	    		}else{
+	    			return userService.createLoginURL("/cellView/menu.jsp");
+	    		}
 	    	}
 	    	else{
-	    		return "viewCategory.do";
+	    		if(detectBrowser(request) == BrowserType.Desktop){
+	    			return "viewCategory.do";
+	    		}else{
+	    			return "/cellView/menu.jsp";
+	    		}
 	    	}
 	    }
 	    
@@ -102,11 +110,12 @@ public class Controller extends HttpServlet {
 	   		RequestDispatcher d = request.getRequestDispatcher("/"+nextPage);
 	   		d.forward(request,response);
 	 }
-	 private static Pattern mobileDevicePattern = Pattern.compile("(iphone|ipod|blackberry|android|palm|windows\\s+ce)");
+	 private static Pattern mobileDevicePattern = Pattern.compile(".*(iphone|ipod|blackberry|android|palm|windows\\s+ce).*");
 	 public static BrowserType detectBrowser(HttpServletRequest request){
-		 Matcher matcher = mobileDevicePattern.matcher(request.getHeader("User-Agent"));
-		 if(matcher.matches())
+		 Matcher matcher = mobileDevicePattern.matcher(request.getHeader("User-Agent").toLowerCase());
+		 if(!matcher.matches()){			 
 			 return BrowserType.Mobile;
+		 }
 		 else
 			 return BrowserType.Desktop;
 	 }
