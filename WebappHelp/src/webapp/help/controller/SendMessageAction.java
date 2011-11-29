@@ -3,6 +3,7 @@ package webapp.help.controller;
 import javax.servlet.http.HttpServletRequest;
 import webapp.help.dao.Model;
 import webapp.help.utility.BrowserType;
+import webapp.help.utility.Category;
 import webapp.help.utility.Mailer;
 
 public class SendMessageAction extends Action {
