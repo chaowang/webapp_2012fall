@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import webapp.help.beans.ContactBean;
 import webapp.help.dao.Model;
-import webapp.help.utility.Category;
 
 public class AddContactAction extends Action {
 	public static String actionName="addContact.do";

@@ -1,14 +1,8 @@
 package webapp.help.controller;
 
 import javax.servlet.http.HttpServletRequest;
-
-import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
-
 import webapp.help.dao.Model;
 import webapp.help.utility.BrowserType;
-import webapp.help.utility.Category;
 import webapp.help.utility.Mailer;
 
 public class SendMessageAction extends Action {
