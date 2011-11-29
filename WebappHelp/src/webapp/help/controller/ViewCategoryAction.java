@@ -36,6 +36,7 @@ public class ViewCategoryAction extends Action {
 		
 			list = model.getContactsDAO().getContacts(Category.GENERAL);
 		}
+		
 		else if(category.equals("GENERAL")){
 			list = model.getContactsDAO().getContacts(Category.GENERAL);
 		}else if(category.equals("MEDICAL")){
