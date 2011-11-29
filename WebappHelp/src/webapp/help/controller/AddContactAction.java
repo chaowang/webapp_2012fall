@@ -39,6 +39,9 @@ public class AddContactAction extends Action {
 			bean = ContactBean.createBean(request);
 			
 			errors.addAll(bean.getValidationErrors());
+			if(model.getContactsDAO().getContact(bean.getEmail())!=null){
+				errors.add("the email of the contact is already in your contacts list");
+			}
 			if(errors.size()>0){
 				request.setAttribute("contact", bean);
 				request.setAttribute("category", category);

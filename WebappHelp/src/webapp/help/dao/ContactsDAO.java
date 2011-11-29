@@ -72,4 +72,22 @@ public class ContactsDAO {
 		
 		return list;
 	}
+    public ContactBean getContact(String email){
+    	ContactBean bean = null;
+    	datastore = DatastoreServiceFactory.getDatastoreService();
+
+    	Query query = new Query(ContactBean.kind, 
+    			KeyFactory.createKey("User", 
+    					UserServiceFactory.getUserService().getCurrentUser().getEmail()));
+
+		query.addFilter(ContactBean.PROPERTY_EMAIL, Query.FilterOperator.EQUAL, email);
+	   
+
+		System.out.println(query.getKind() + " fetching! " + query.toString());
+		for(Entity e : datastore.prepare(query).asIterable()){
+			bean = new ContactBean(e);
+	    }
+		
+		return bean;
+    }
 }

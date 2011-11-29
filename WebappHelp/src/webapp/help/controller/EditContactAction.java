@@ -30,6 +30,7 @@ public class EditContactAction extends Action {
 	
 		request.setAttribute("errors",errors);
 		ContactBean bean = ContactBean.createBean(request);
+		ContactBean redundent;
 		
 		button = request.getParameter("button");
 		
@@ -44,6 +45,12 @@ public class EditContactAction extends Action {
 			
 			errors.addAll(bean.getValidationErrors());
 			
+			redundent =model.getContactsDAO().getContact(bean.getEmail());
+			if(redundent!=null){
+				if(!redundent.getKeyStr().equals(bean.getKeyStr())){
+					errors.add("the email of the contact is already in your contacts list");
+				}
+			}
 			if(errors.size()>0){
 				request.setAttribute("contact", bean);
 				return "view/edit.jsp";
