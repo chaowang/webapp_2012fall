@@ -37,8 +37,6 @@ public class SendMessageAction extends Action {
 			else color = "#FFC000";
 			request.setAttribute("color", color);
 		}
-		
-	
 			
 		Mailer.sendMesssages(model.getContactsDAO().getContacts(category), longitude, latitude);
 		

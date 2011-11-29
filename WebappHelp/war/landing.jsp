@@ -10,17 +10,5 @@
 
 	<center><img src="sample.png" align="absmiddle" ></center>
 
-	<center><img src="sample.png" width="720" height="450" border="1"></center>
-	<table>
-		<tr>
-			<td>
-				You never know when you need Help.
-			</td>
-			<td>
-				Help will ask for help when you are in an emergency.
-			</td>
-		</tr>
-	</table>
-
   </body>
 </html>
