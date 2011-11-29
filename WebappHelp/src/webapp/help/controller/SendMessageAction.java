@@ -26,14 +26,26 @@ public class SendMessageAction extends Action {
 		if(category == null){
 			return "error.jsp";
 		}
+		else{
+			String color;
+			request.setAttribute("category", new String(category));
+			if(category.equals(Category.GENERAL)) color = "#FFC000";
+			else if(category.equals(Category.MEDICAL)) color = "#00B0F0";
+			else if(category.equals(Category.CAR)) color = "#92D050";
+			else if(category.equals(Category.FIRE)) color = "#FFAEC9";
+			else color = "#FFC000";
+			request.setAttribute("color", color);
+		}
+		
+	
 			
 		Mailer.sendMesssages(model.getContactsDAO().getContacts(category), longitude, latitude);
 		
 		
 		if(Controller.detectBrowser(request) == BrowserType.Desktop)
-			return "/viewCategory.do";
+			return "viewCategory.do";
 		else
-			return "/cellView/medical.jsp";
+			return "cellView/medical.jsp";
 	}
 
 }
