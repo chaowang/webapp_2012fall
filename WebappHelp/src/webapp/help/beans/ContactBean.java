@@ -116,8 +116,8 @@ public class ContactBean{
 		
 		return new ContactBean(keyStr,name, phone, email, category, message);
 	}
-	 private boolean verifyEmail(String email){
-	    	
+	 private boolean verifyEmail(String rawEmail){
+	    	String email=rawEmail.trim();
 	    	int identifierPos=-1;
 	    	int periodPos=-1;
 
@@ -128,7 +128,7 @@ public class ContactBean{
 	    	for(int i=0;i<email.length();i++){
 	    		if(email.charAt(i)=='@')
 	    			identifierPos=i;
-	    		
+	    
 	    		if(email.charAt(i)==' ')
 	    			return false;
 	    		/*
