@@ -30,12 +30,16 @@ public class ViewContactAction extends Action {
 		String keyStr;
 		ContactBean bean;
 		Key key;
+		String category = request.getParameter("category");
+		
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors",errors);
+		
 		
 		keyStr = request.getParameter("keyStr");
 		if(keyStr==null){
 			errors.add("can not find the contact");
+			request.setAttribute("category",category);
 			return "view/Home.jsp";
 			
 		}
@@ -44,10 +48,12 @@ public class ViewContactAction extends Action {
 			key = KeyFactory.stringToKey(keyStr);
 			bean = model.getContactsDAO().getContact(key);
 			request.setAttribute("currContact", bean);
+			request.setAttribute("category", bean.getCategory());
 			request.setAttribute("keyStr",keyStr);
 		} catch (EntityNotFoundException e) {
 			// TODO Auto-generated catch block
 			errors.add("can not find the contact");
+			request.setAttribute("category",category);
 			return "view/Home.jsp";
 		}
 		//return "view/Home.jsp";

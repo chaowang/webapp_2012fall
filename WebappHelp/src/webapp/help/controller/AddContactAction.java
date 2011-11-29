@@ -24,14 +24,16 @@ public class AddContactAction extends Action {
 	public String perform(HttpServletRequest request) {
 		String button;
 		ContactBean bean;
+		String category = request.getParameter("category");
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors",errors);
 		
 		button = request.getParameter("button");
 		
 		if(button.equals("cancel")){
-			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
+			List<ContactBean> list = model.getContactsDAO().getContacts(category);
 			request.setAttribute("list",list);
+			request.setAttribute("category", category);
 			return "view/Home.jsp";
 		}else if (button.equals("save")){
 			bean = ContactBean.createBean(request);
@@ -39,6 +41,7 @@ public class AddContactAction extends Action {
 			errors.addAll(bean.getValidationErrors());
 			if(errors.size()>0){
 				request.setAttribute("contact", bean);
+				request.setAttribute("category", category);
 				return "view/add.jsp";
 			}
 			
@@ -47,12 +50,14 @@ public class AddContactAction extends Action {
 			request.setAttribute("list",list);
 			request.setAttribute("currContact", bean);
 			request.setAttribute("keyStr", bean.getKey());
+			request.setAttribute("category", bean.getCategory());
 			return "view/Home.jsp";
 		}
 		else{
 			bean = ContactBean.createBean(request);
 			errors.add("unknown button");
 			request.setAttribute("contact", bean);
+			request.setAttribute("category", category);
 			return "view/add.jsp";
 			
 		}

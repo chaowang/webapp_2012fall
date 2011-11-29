@@ -33,17 +33,16 @@ public class ViewCategoryAction extends Action {
 		if(category==null)
 		{
 			category = Category.GENERAL;
-		}
-		if(category==null){
+		
 			list = model.getContactsDAO().getContacts(Category.GENERAL);
 		}
-		else if(category.equals("General")){
+		else if(category.equals("GENERAL")){
 			list = model.getContactsDAO().getContacts(Category.GENERAL);
-		}else if(category.equals("Medical")){
+		}else if(category.equals("MEDICAL")){
 			list = model.getContactsDAO().getContacts(Category.MEDICAL);
-		}else if(category.equals("Car")){
+		}else if(category.equals("CAR")){
 			list = model.getContactsDAO().getContacts(Category.CAR);
-		}else if(category.equals("Fire")){
+		}else if(category.equals("FIRE")){
 			list = model.getContactsDAO().getContacts(Category.FIRE);
 		}else{
 			errors.add("no such category");

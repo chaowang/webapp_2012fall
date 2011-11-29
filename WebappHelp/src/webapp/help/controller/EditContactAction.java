@@ -27,6 +27,7 @@ public class EditContactAction extends Action {
 	public String perform(HttpServletRequest request) {
 		String button;
 		List<String> errors = new ArrayList<String>();
+	
 		request.setAttribute("errors",errors);
 		ContactBean bean = ContactBean.createBean(request);
 		
@@ -36,6 +37,7 @@ public class EditContactAction extends Action {
 			List<ContactBean> list = model.getContactsDAO().getContacts(bean.getCategory());
 			request.setAttribute("list",list);
 			request.setAttribute("currContact",bean);
+			request.setAttribute("category",bean.getCategory());
 			return "view/Home.jsp";
 		}else if (button.equals("save")){
 			
@@ -53,11 +55,13 @@ public class EditContactAction extends Action {
 			List<ContactBean> list = model.getContactsDAO().getContacts(bean.getCategory());
 			request.setAttribute("list",list);
 			request.setAttribute("currContact",bean);
+			request.setAttribute("category",bean.getCategory());
 			
 			return "view/Home.jsp";
 		}
 		else{
 			errors.add("unknown button");
+			request.setAttribute("contact", bean);
 			return "view/edit.jsp";
 			
 		}

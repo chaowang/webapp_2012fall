@@ -117,6 +117,7 @@
 
 
 </SELECT>
+<input type="hidden" name="category" value="${category}"/>
 <INPUT id=u16 type=submit class="u16"  name="button" value="cancel"  >
 
 <INPUT id=u17 type=submit class="u17" name="button"  value="save"  >

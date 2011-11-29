@@ -20,9 +20,9 @@
 <SCRIPT src="view/resources/scripts/messagecenter.js"></SCRIPT>
 
 <script type="text/javascript">
-function viewContact(keyStr) {
+function viewContact(keyStr,category) {
 	
-	document.location.href = 'viewContact.do?keyStr='+keyStr;
+	document.location.href = 'viewContact.do?keyStr='+keyStr+'&category='+category;
 	
 }
 </script>
@@ -89,10 +89,10 @@ function viewContact(keyStr) {
 		<c:forEach var="contact" items="${list}">
 			<c:choose>
 			<c:when test="${contact.keyStr == keyStr}">
-				<OPTION onClick="viewContact('${contact.keyStr}')" selected="selected">${contact.name}</OPTION>
+				<OPTION onClick="viewContact('${contact.keyStr}','${contact.category}')" selected="selected">${contact.name}</OPTION>
  			</c:when>
  			<c:otherwise>
- 				<OPTION onClick="viewContact('${contact.keyStr}')" >${contact.name}</OPTION>
+ 				<OPTION onClick="viewContact('${contact.keyStr}','${contact.category}')" >${contact.name}</OPTION>
  			</c:otherwise>
  			</c:choose>
 		</c:forEach>
@@ -148,7 +148,8 @@ function viewContact(keyStr) {
 
 <form method="POST" action="updateContact.do">
 			
-                    <input type="hidden" name="keyStr" value=" ${currContact.keyStr}"/>
+                    <input type="hidden" name="keyStr" value="${currContact.keyStr}"/>
+                     <input type="hidden" name="category" value="${category}"/>
                     <input  id=u23 type=submit class="u23" name = "button" value="remove"/>
                     <input id=u24 type=submit class="u24" name = "button" value="edit"/>
 </form>

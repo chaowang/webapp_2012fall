@@ -11,7 +11,6 @@ import com.google.appengine.api.datastore.KeyFactory;
 
 import webapp.help.beans.ContactBean;
 import webapp.help.dao.Model;
-import webapp.help.utility.Category;
 
 public class UpdateContact extends Action {
 	public static String actionName="updateContact.do";
@@ -26,14 +25,17 @@ public class UpdateContact extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request) {
-
+        
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors",errors);
 		String keyStr = request.getParameter("keyStr");
-		if(keyStr==null||keyStr.equals(" ")){
+		String category = request.getParameter("category");
+		
+		if(keyStr==null||keyStr.equals("")){
 			errors.add("no contact is selected");
-			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
+			List<ContactBean> list = model.getContactsDAO().getContacts(category);
 			request.setAttribute("list",list);
+			request.setAttribute("category", category);
 			return "view/Home.jsp";
 		}
 		Key key=KeyFactory.stringToKey(keyStr);
@@ -45,8 +47,9 @@ public class UpdateContact extends Action {
 		if(button.equals("remove")){
 		
 			model.getContactsDAO().deleteContact(key);
-			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
+			List<ContactBean> list = model.getContactsDAO().getContacts(category);
 			request.setAttribute("list",list);
+			request.setAttribute("category", category);
 
 			return "view/Home.jsp";
 		}
@@ -58,16 +61,18 @@ public class UpdateContact extends Action {
 			} catch (EntityNotFoundException e) {
 				// TODO Auto-generated catch block
 				errors.add(e.toString());
-				List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
+				List<ContactBean> list = model.getContactsDAO().getContacts(category);
 				request.setAttribute("list",list);
+				request.setAttribute("category", category);
 				return "view/Home.jsp";
 			}
 			
 		}
 		else{
 			errors.add("unknown action");
-			List<ContactBean> list = model.getContactsDAO().getContacts(Category.GENERAL);
+			List<ContactBean> list = model.getContactsDAO().getContacts(category);
 			request.setAttribute("list",list);
+			request.setAttribute("category", category);
 			return "view/Home.jsp";
 		}
 

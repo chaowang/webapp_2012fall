@@ -19,7 +19,8 @@ public class StartAdd extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request) {
-
+		String category = request.getParameter("category");
+		request.setAttribute("category", category);
 		return "view/add.jsp";
 
 	}
