@@ -5,6 +5,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
 
 <%@ page import="webapp.help.utility.Category" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="imagetoolbar" content="no">
@@ -21,9 +25,8 @@
 </HEAD>
 <BODY>
 <DIV class="main_container">
-<jsp:include page="error-list.jsp" />
-<DIV id=u0_container class="u0_container">
-<DIV id="u0_img" class="u0_original"></DIV>
+  <DIV id=u0_container class="u0_container">
+  <DIV id="u0_img" class="u0_original"></DIV>
 <DIV id=u1 class="u1" >
 <DIV id=u1_rtf><p style="text-align:center;"><span style="font-family:Century Gothic;font-size:18px;font-weight:normal;font-style:normal;text-decoration:none;color:#FFFFFF;">Fire</span></p></DIV></DIV>
 </DIV>
@@ -57,8 +60,14 @@
 </DIV>
 <IMG id=u8 src="view/resources/images/transparent.gif" class="u8"    >
 
+
+<%
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+ %>
+ 
 <DIV id=u10 class="u10" >
-<DIV id=u10_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:16px;font-weight:normal;font-style:normal;text-decoration:underline;color:#4BACC6;">Logout</span></p></DIV></DIV>
+<DIV id=u10_rtf><a href="<%= userService.createLogoutURL("/landing.jsp") %>">logout</a></DIV></DIV>
 <DIV id=u11_container class="u11_container">
 <DIV id="u11_img" class="u11_original"></DIV>
 <DIV id=u12 class="u12" >
@@ -150,6 +159,7 @@
 </DIV>
 <IMG id=u26 src="view/resources/images/transparent.gif" class="u26"    >
 </DIV>
+<jsp:include page="error-list.jsp" />
 <DIV class=preload>
 <img src="view/add_files/u0_original.png" width="1" height="1"/>
 <img src="view/add_files/u2_original.png" width="1" height="1"/>

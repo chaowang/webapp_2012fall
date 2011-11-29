@@ -1,11 +1,11 @@
 ﻿
-var PageName = 'edit';
-var PageId = 'ba76ad45c9ea43b786d120b6eede0901'
-var PageUrl = 'edit.html'
-document.title = 'edit';
+var PageName = 'Home';
+var PageId = '4a10d9f8148b43eeab1e8556e517148c'
+var PageUrl = 'Home.html'
+document.title = 'Home';
 var PageNotes = 
 {
-"pageName":"edit",
+"pageName":"Home",
 "showNotesNames":"False"}
 var $OnLoadVariable = '';
 
@@ -71,6 +71,8 @@ var u10 = document.getElementById('u10');
 
 var u17 = document.getElementById('u17');
 
+var u22 = document.getElementById('u22');
+gv_vAlignTable['u22'] = 'center';
 var u5 = document.getElementById('u5');
 gv_vAlignTable['u5'] = 'center';
 var u1 = document.getElementById('u1');
@@ -80,17 +82,21 @@ gv_vAlignTable['u9'] = 'center';
 var u14 = document.getElementById('u14');
 gv_vAlignTable['u14'] = 'top';
 var u20 = document.getElementById('u20');
-
+gv_vAlignTable['u20'] = 'center';
 var u6 = document.getElementById('u6');
 
 var u2 = document.getElementById('u2');
 
 var u11 = document.getElementById('u11');
 gv_vAlignTable['u11'] = 'top';
+var u23 = document.getElementById('u23');
+
+var u24 = document.getElementById('u24');
+
 var u13 = document.getElementById('u13');
 gv_vAlignTable['u13'] = 'center';
 var u18 = document.getElementById('u18');
-
+gv_vAlignTable['u18'] = 'center';
 var u7 = document.getElementById('u7');
 gv_vAlignTable['u7'] = 'center';
 if (window.OnLoad) OnLoad();

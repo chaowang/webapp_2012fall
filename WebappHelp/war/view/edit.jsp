@@ -1,4 +1,8 @@
 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 
 <HTML><HEAD>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
@@ -57,17 +61,20 @@
 </DIV>
 <IMG id=u8 src="view/resources/images/transparent.gif" class="u8"    >
 
+<%
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+ %>
 <DIV id=u10 class="u10" >
-<DIV id=u10_rtf><p style="text-align:left;"><span style="font-family:Century Gothic;font-size:16px;font-weight:normal;font-style:normal;text-decoration:underline;color:#4BACC6;">Logout</span></p></DIV></DIV>
+<DIV id=u10_rtf><a href="<%= userService.createLogoutURL("/landing.jsp") %>">logout</a></DIV></DIV>
 <DIV id=u11_container class="u11_container">
 <DIV id="u11_img" class="u11_original"></DIV>
 <DIV id=u12 class="u12" >
 <DIV id=u12_rtf>&nbsp;</DIV></DIV>
 </DIV>
 <IMG id=u11 src="view/resources/images/transparent.gif" class="u11"    >
-<jsp:include page="error-list.jsp" />
 <form action="editContact.do" method="post">
-<INPUT id=u18 type=text name="name"  value="${contact.name}" class="u18"     >
+  <INPUT id=u18 type=text name="name"  value="${contact.name}" class="u18"     >
 
 <INPUT id=u13 type=text name="email" value="${contact.email}" class="u13"     >
 
@@ -152,6 +159,7 @@
 </DIV>
 <IMG id=u26 src="view/resources/images/transparent.gif" class="u26"    >
 </DIV>
+<jsp:include page="error-list.jsp" />
 <DIV class=preload>
 <img src="view/add_files/u0_original.png" width="1" height="1"/>
 <img src="view/add_files/u2_original.png" width="1" height="1"/>
