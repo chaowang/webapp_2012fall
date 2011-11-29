@@ -1,6 +1,4 @@
 package webapp.help.utility;
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -11,13 +9,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import javax.mail.internet.MimeUtility;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import webapp.help.beans.ContactBean;
@@ -33,8 +24,10 @@ public class Mailer {
 
         try {
             Message msg;
-            Multipart mp;
-            MimeBodyPart htmlPart;
+            @SuppressWarnings("unused")
+			Multipart mp;
+            @SuppressWarnings("unused")
+			MimeBodyPart htmlPart;
             for(ContactBean contact: contacts){
             	mp = new MimeMultipart();
             	htmlPart = new MimeBodyPart();
