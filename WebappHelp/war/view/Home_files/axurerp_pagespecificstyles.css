@@ -207,11 +207,11 @@ div.main_container {
 }
 
 #u8_img {
-    position:absolute;
-    left:-3px;
-    top:-3px;
-    width:139px;
-    height:46px;
+	position:absolute;
+	left:-6px;
+	top:-3px;
+	width:146px;
+	height:46px;
 }
 
 .u9 {
@@ -527,4 +527,3 @@ div.main_container {
     text-decoration:none;
     
 }
-
