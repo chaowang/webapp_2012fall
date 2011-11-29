@@ -6,9 +6,6 @@
 <html>
   <body>
 		<jsp:include page="loginbar.jsp"/>
-
-
 	<center><img src="sample.png" align="absmiddle" ></center>
-
   </body>
 </html>
